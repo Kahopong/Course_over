@@ -1,0 +1,1 @@
+//list edit info for shops and users
