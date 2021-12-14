@@ -2,20 +2,17 @@ const port = 8000;
 
 //require classes
 //================
-const {
-    BookRouter,
-    HostRouter,
-    InfoRouter,
-    MyCourseRouter,
-    ViewRouter
-} = require('./Routers');
 
-const {
-    BookService,
-    HostService,
-    InfoService,
-    MyCourseService,
-} = require('./Services')
+const BookService = require('./services/BookService.js')
+const HostService = require('./services/HostService.js')
+const InfoService = require('./services/InfoService.js')
+const MyCourseService = require('./services/MyCourseService.js')
+
+const BookRouter = require('./routers/BookRouter.js')
+const HostRouter = require('./routers/HostRouter.js')
+const InfoRouter = require('./routers/InfoRouter.js')
+const MyCourseRouter = require('./routers/MyCourseRouter.js')
+const ViewRouter = require('./routers/ViewRouter.js')
 
 
 //Configure knex
@@ -59,23 +56,26 @@ const passportJs = require('./Authentication/passport')
 
 // Set up Server and Routers
 //==================================
+const bookService = new BookService(knex);
+const hostService = new HostService(knex);
+const infoService = new InfoService(knex);
+const myCourseService = new MyCourseService(knex);
 
-const noteService = new NoteService(knex);
-const noteRouter = new NoteRouter(noteService, express)
-app.use("/api/notes", noteRouter.router())
-const viewRouter = new ViewRouter(passport, express)
-app.use("/", viewRouter.router())
-
+app.use("/book", new BookRouter(bookService, express).router())
+app.use("/host", new HostRouter(hostService, express).router())
+app.use("/info", new InfoRouter(infoService, express).router())
+app.use("/myCourse", new MyCourseRouter(myCourseService, express).router())
+app.use("/", new ViewRouter(passport, express).router())
 
 
 app.get("/", (req, res) => {
-    res.render('firstPage')
+    res.render('homePage')
 });
-
 
 // Listen to port
 app.listen(port, () => {
     console.log(`Listening on ${port}`);
 });
+
 
 module.exports = app
