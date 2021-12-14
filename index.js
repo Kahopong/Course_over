@@ -2,9 +2,21 @@ const port = 8000;
 
 //require classes
 //================
-const NoteRouter = require('./Routers/NoteRouter.js')
-const NoteService = require('./Services/NoteService.js')
-const ViewRouter = require('./Routers/ViewRouter.js')
+const {
+    BookRouter,
+    HostRouter,
+    InfoRouter,
+    MyCourseRouter,
+    ViewRouter
+} = require('./Routers');
+
+const {
+    BookService,
+    HostService,
+    InfoService,
+    MyCourseService,
+} = require('./Services')
+
 
 //Configure knex
 //===============
@@ -43,12 +55,10 @@ const cors = require("cors");
 // Passport Authentication
 //==================================
 const passportJs = require('./Authentication/passport')
-    // const auth = require('./Authentication/auth')
 
 
 // Set up Server and Routers
 //==================================
-
 
 const noteService = new NoteService(knex);
 const noteRouter = new NoteRouter(noteService, express)
