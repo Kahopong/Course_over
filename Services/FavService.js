@@ -1,7 +1,7 @@
-//host a course by a shop
-//list, add, delete, edit
+//fav , unfav
 
-class HostService {
+
+class FavService {
     constructor(knex) {
         this.knex = knex
     }
@@ -12,11 +12,11 @@ class HostService {
 
 }
 
-module.exports = HostService;
+module.exports = FavService;
 
 
 //For trying individual js files
 
 const knexFile = require('../knexfile').development;
 const knex = require('knex')(knexFile);
-let hostService = new HostService(knex);
+let favService = new FavService(knex);

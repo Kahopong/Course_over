@@ -1,5 +1,5 @@
 //List my course
-//booking history,favourite and reviews
+//current booking,favourite and reviews
 
 class MyCourseService {
     constructor(knex) {
@@ -15,7 +15,7 @@ class MyCourseService {
 module.exports = MyCourseService;
 
 
-//For trting individual js files
+//For trying individual js files
 
 const knexFile = require('../knexfile').development;
 const knex = require('knex')(knexFile);

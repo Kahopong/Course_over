@@ -15,8 +15,8 @@ class InfoService {
 module.exports = InfoService;
 
 
-//For trting individual js files
+//For trying individual js files
 
-const knexFile = require('../knexfile').development;
-const knex = require('knex')(knexFile);
-let infoService = new InfoService(knex);
+// const knexFile = require('../knexfile').development;
+// const knex = require('knex')(knexFile);
+// let infoService = new InfoService(knex);

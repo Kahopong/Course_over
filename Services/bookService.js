@@ -1,7 +1,6 @@
 //book a course by a user
 //book
 //unbook
-//list
 
 //paid? change by shop
 
@@ -19,7 +18,7 @@ class BookService {
 module.exports = BookService;
 
 
-//For trting individual js files
+//For trying individual js files
 
 const knexFile = require('../knexfile').development;
 const knex = require('knex')(knexFile);
