@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: '/Users/Kaho/Desktop/course_over/.env' })
 
 module.exports = {
 
