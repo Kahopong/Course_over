@@ -6,34 +6,71 @@ class InfoRouter {
 
     router() {
         let router = this.express.Router();
-        // example
-        // router.get('/', this.get.bind(this))
+        router.get('/users', this.getUsers.bind(this))
+        router.get('/shop', this.getShop.bind(this))
+        router.put('/users', this.putUsers.bind(this))
+        router.put('/shop', this.putShop.bind(this))
 
         return router;
     }
 
-    // GET Method
+    // GET Users Info
     // ==================================
-    get(req, res) {
-
+    getUsers(req, res) {
+        return (this.infoService.listUser(2)
+            .then((data) => {
+                res.json(data)
+            })
+            .catch((err) => {
+                res.status(500)
+                return res.json(err)
+            }));
     }
 
-    // POST Method
+    // GET Shop Info
     // ==================================
-    post(req, res) {
-
+    getShop(req, res) {
+        return (this.infoService.listShop(2)
+            .then((data) => {
+                res.json(data)
+            })
+            .catch((err) => {
+                res.status(500)
+                return res.json(err)
+            }));
     }
 
-    // PUT Method
-    // ==================================
-    put(req, res) {
 
+    // Edit Users Info
+    // ==================================
+    putUsers(req, res) {
+        return (this.infoService
+            .editUser(3, req.body.edit)
+            .then(() => this.infoService.listUser(3))
+            .then((data) => {
+                res.json(data)
+            })
+            .catch((err) => {
+                res.status(500)
+                return res.json(err)
+            })
+        )
     }
 
-    // DELETE Method
+    // Edit Shop Info
     // ==================================
-    delete(req, res) {
-
+    putShop(req, res) {
+        return (this.infoService
+            .editShop(3, req.body.edit)
+            .then(() => this.infoService.listShop(3))
+            .then((data) => {
+                res.json(data)
+            })
+            .catch((err) => {
+                res.status(500)
+                return res.json(err)
+            })
+        );
     }
 }
 
