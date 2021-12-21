@@ -77,9 +77,9 @@ module.exports = InfoService;
 
 //For trying individual js files
 
-// const knexFile = require('../knexfile').development;
-// const knex = require('knex')(knexFile);
-// let infoService = new InfoService(knex);
+const knexFile = require('../knexfile').development;
+const knex = require('knex')(knexFile);
+let infoService = new InfoService(knex);
 // infoService.listUser(1).then((a) => console.log(a))
 // infoService.listShop(1).then((a) => console.log(a))
 
