@@ -5,7 +5,10 @@ class MyCourseService {
     constructor(knex) {
         this.knex = knex
     }
-
+    
+    listbooking(id){
+        this.knex
+    }
 
 
 
