@@ -73,7 +73,7 @@ app.use("/", new ViewRouter(passport, express).router())
 
 
 app.get("/", (req, res) => {
-    res.render('homePage')
+    res.render('index')
 });
 
 // Listen to port

@@ -41,7 +41,7 @@ class ViewRouter {
 
         router.post('/login', this.passport.authenticate('local-login', {
             successRedirect: '/index',
-            failureRedirect: '/error',
+            failureRedirect: '/signup',
             failureFlash: true,
         }))
 
