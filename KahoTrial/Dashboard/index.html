@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <section id='section1'>
+        <div class='stats container d-flex justify-content-between'>
+            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <img class='companyLogo' src='lego.jpeg'>
+                <p> XX Company</p>
+            </div>
+            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <p>Listing Course</p>
+                <h1>10</h1>
+            </div>
+            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <p>Course Completed</p>
+                <h1>3</h1>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id='section2'>
+        <div class='host container'>
+            <button class='newbtn'><i class="fas fa-plus"></i> &nbsp;&nbsp;NEW COURSE</button>
+            <div class='table_container'>
+                <table class='host_table'>
+                    <col style="width:45%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                    <thead>
+                        <tr class='header'>
+                            <th>Course Name</th>
+                            <th>Date</th>
+                            <th>Quota</th>
+                            <th>Functions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Flower Watercolour Workshop</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Acrylic Galaxy Painting</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Sketching Class</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Art jamming</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <section id='section3'>
+        <div class='footer container-fluid d-flex justify-content-center'>
+            <div class='footer-content'>
+                <div class='logo row col-lg-12'>
+                    <h2>CourseOver</h2>
+                </div>
+                <div class='row'>
+                    <div class='contact-us col-lg-5'>
+                        <h5>CONTACT US</h5>
+                        <p><i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;contact@courseover.com</p>
+                        <p><i class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;courseOverHK</p>
+                        <p><i class="fab fa-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;courseOverHK</p>
+                    </div>
+                    <div class='account col-lg-5'>
+                        <h5>ACCOUNT</h5>
+                        <p>My Account</p>
+                        <p>My Course</p>
+                    </div>
+                </div>
+                <div class='copyright row col-lg-12'>
+                    <p>© CourseOver 2021 - All Right Reserved</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- {{!-- CDN handlebars = for Handlebars.compile --}} -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <!-- {{!-- CDN axios = for sending API calls (promise based)--}} -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+    <script src="notes.js"></script>
+</body>
+
+</html>

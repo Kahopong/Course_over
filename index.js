@@ -4,12 +4,14 @@ const port = 8000;
 //================
 
 const BookService = require('./services/BookService.js')
+const DisplayService = require('./services/DisplayService.js')
 const FavService = require('./services/FavService.js')
 const HostService = require('./services/HostService.js')
 const InfoService = require('./services/InfoService.js')
 const MyCourseService = require('./services/MyCourseService.js')
 
 const BookRouter = require('./routers/BookRouter.js')
+const DisplayRouter = require('./routers/DisplayRouter.js')
 const FavRouter = require('./routers/FavRouter.js')
 const HostRouter = require('./routers/HostRouter.js')
 const InfoRouter = require('./routers/InfoRouter.js')
@@ -59,12 +61,14 @@ const passportJs = require('./Authentication/passport')
 // Set up Server and Routers
 //==================================
 const bookService = new BookService(knex);
+const displayService = new DisplayService(knex);
 const favService = new FavService(knex);
 const hostService = new HostService(knex);
 const infoService = new InfoService(knex);
 const myCourseService = new MyCourseService(knex);
 
 app.use("/book", new BookRouter(bookService, express).router())
+app.use("/display", new DisplayRouter(displayService, express).router())
 app.use("/fav", new FavRouter(favService, express).router())
 app.use("/host", new HostRouter(hostService, express).router())
 app.use("/info", new InfoRouter(infoService, express).router())
