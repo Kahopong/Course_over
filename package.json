@@ -21,7 +21,7 @@
         "express-session": "^1.17.2",
         "jest": "^27.4.4",
         "knex": "^0.95.14",
-        "passport": "^0.5.0",
+        "passport": "^0.5.2",
         "passport-local": "^1.0.0",
         "pg": "^8.7.1"
     },
