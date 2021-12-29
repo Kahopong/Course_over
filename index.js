@@ -72,6 +72,7 @@ app.use("/info", new InfoRouter(infoService, express).router());
 app.use("/myCourse", new MyCourseRouter(myCourseService, express).router());
 app.use("/", new ViewRouter(passport, express).router());
 
+
 app.get("/", (req, res) => {
     res.render('usershb/index', { layout: 'users_main' })
 });

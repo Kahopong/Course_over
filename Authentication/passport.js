@@ -134,10 +134,49 @@ function localSignup() {
     }));
 }
 
+function localSignup2() {
+    passport.use('local-signup2', new LocalStrategy({passReqToCallback:true}, async(req, username, password, done) => {
+        console.log(req.body);
+        try {
+            let users = await knex('shop_login').where({ email: username })
+            if (users.length !== 0) {
+                console.log("test3")
+                return done(null, false, { message: 'This Account is already being used!' })
+            }
+            // let hash = await hashFunctions.hashPassword(password)
+            console.log("test4")
+            const newUser = {
+                company:req.body.CompanyN,
+                tel:req.body.Tel2,
+                email:username,
+                
+            }
+            let userId = await knex('shop').insert(newUser).returning('id')
+            console.log(userId)
+            const newUserlogin = {
+                email: username,
+                password: password,
+                shop_id: userId[0]
+                
+            }
+            
+            let userloginId = await knex('shop_login').insert(newUserlogin).returning('id')
+            newUserlogin.id = userloginId[0]
+            
+            done(null, newUserlogin, { message: `Hey ${newUserlogin.username}! You can now login to use the death note!` })
+
+
+        } catch (err) {
+            if (err) {
+                done(err)
+            }
+        }
+    }));
+}
 
 
 module.exports = localLogin()
-
+module.exports = localSignup2()
 module.exports = localSignup()
     // module.exports = serialize()
     // module.exports = deserialize()

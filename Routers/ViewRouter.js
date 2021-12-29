@@ -20,8 +20,19 @@ class ViewRouter {
             })
         })
 
+     
         router.get('/signup', (req, res) => {
-            res.render('login/signup', { layout: 'login_main' })
+            res.render('signup')
+        })
+
+        router.get('/shopsignup', (req, res) => {
+            res.render('shopsignup')
+        })
+
+        router.get('/error', (req, res) => {
+            res.render('error', {
+                error: req.flash('error')
+            })
         })
 
         router.get('/index', auth.isLoggedIn, (req, res) => {
@@ -39,9 +50,16 @@ class ViewRouter {
             failureFlash: true,
         }))
 
+        router.post('/shopsignup', this.passport.authenticate('local-signup2', {
+            successFlash: true,
+            successRedirect: '/login',
+            failureRedirect: '/error',
+            failureFlash: true,
+        }))
+
         router.post('/login', this.passport.authenticate('local-login', {
             successRedirect: '/index',
-            failureRedirect: '/signup',
+            failureRedirect: '/login',
             failureFlash: true,
         }))
 

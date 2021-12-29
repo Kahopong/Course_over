@@ -45,7 +45,7 @@
     <script>
         let logoutButton = document.getElementById('logout')
         logoutButton.addEventListener("click", () => {
-            $.get('/logout', function(data) {
+             $.get('/logout', function(data) {
                 console.log(data)
                 window.location.reload();
             })
