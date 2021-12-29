@@ -15,14 +15,14 @@ class HostRouter {
     return router;
   }
 
-  // GET Method
+  // GET Method - list
   // ==================================
   get(req, res) {
     return this.hostService
-      .listCourse(req.)
-      .then((courseArr) => {
-        let course = courseArr.map((a) => a["course"]);
-        res.json(course);
+      .listCourse(1)
+      .then((data) => {
+        console.log(req);
+        res.json(data);
       })
       .catch((err) => {
         res.status(500);
@@ -32,15 +32,54 @@ class HostRouter {
 
   // POST Method
   // ==================================
-  post(req, res) {}
+  post(req, res) {
+    return this.hostService
+      .addCourse(1, req.body.course)
+      .then(() => {
+        return this.hostService.listCourse(1);
+      })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 
-  // PUT Method  req.params.courseId
+  // PUT Method
   // ==================================
-  put(req, res) {}
+  put(req, res) {
+    return this.hostService
+      .editCourse(req.params.courseId, req.body.course, 1)
+      .then(() => {
+        return this.hostService.listCourse(1);
+      })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 
-  // DELETE Method  req.params.courseId
+  // DELETE Method
   // ==================================
-  delete(req, res) {}
+  delete(req, res) {
+    return this.hostService
+      .removeCourse(1, req.params.courseId)
+      .then(() => {
+        return this.hostService.listCourse(1);
+      })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 }
 
 module.exports = HostRouter;
