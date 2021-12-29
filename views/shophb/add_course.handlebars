@@ -1,17 +1,70 @@
-<h1>I am add course page</h1>
-<form id="add_course_form">
-    <label> title: </label>
-    <input name="title"><br>
-    <label> category: </label>
-    <input name="category"><br>
-    <label> date: </label>
-    <input name="date"><br>
-    <label> quota: </label>
-    <input name="quota"><br>
-    <label> price: </label>
-    <input name="price"><br>
-    <p>etc.......</p>
-    <input type="submit" value="Submit"><br>
-</form>
-<p id='success_add_msg'></p>
-<a href='/dashboard'>dashboard</a>
+<div class="addcourse">
+    <div class="HostC">Host a Course</div>
+    <div class="CourseI">Course Information</div>
+    <hr>
+  <form>
+      <div class="grid-container">
+          <div class="grid-item1">
+            <label for="CourseT">Course Title:</label><br>
+            <input type="text" id="CourseT" name="CourseT"><br>
+          </div>
+          <div class="grid-item2">
+            <label for="Category">Category:</label><br>
+            <input type="text" id="Category" name="Category"><br>
+          </div>
+          <div class="grid-item3">
+            <label for="Location">Location:</label><br>
+            <input type="text" id="Location" name="Location"><br>
+          </div>
+          <div class="grid-item4">
+            <label for="Date">Date:</label><br>
+            <input type="date" id="Date" name="Date"><br>
+          </div>
+          <div class="grid-item5">
+            <label for="StartT">Start Time:</label><br>
+            <input type="text" id="StartT" name="StartT"><br>
+          </div>
+          <div class="grid-item6">
+            <label for="EndT">End Time:</label><br>
+            <input type="text" id="EndT" name="EndT"><br>
+          </div>
+          <div class="grid-item7">
+            <label for="AgeR">Age Range:</label><br>
+            <input type="text" id="AgeR" name="AgeR"><br>
+          </div>
+          <div class="grid-item8">
+            <label for="Quota">Quota:</label><br>
+            <input type="text" id="Quota" name="Quota"><br>
+          </div>
+          <div class="grid-item9">
+            <label for="Price">Price:</label><br>
+            <input type="text" id="Price" name="Price"><br>
+          </div>
+
+      </div>
+
+      <div class="CourseD">Course Detail</div>
+      <hr>
+      <div class="col-12 CourseD2">
+          <label for="AboutC">About the Course:</label><br>
+            <textarea type="text" id="AboutC" name="AboutC"></textarea><br>
+            <label for="SpecN">Special Note:</label><br>
+            <textarea type="text" id="SpecN" name="SpecN"></textarea><br>
+      </div>
+      <div class="CourseIm">Course Image</div>
+      <hr>
+      <div class="col-sm-9 CourseIm2">
+          <label for="Banner">Banner:</label><br>
+            <input type="file" id="Banner" name="Banner"><br>
+            <label for="Pic1">Picture 1:</label><br>
+            <input type="file" id="Pic1" name="Pic1"><br>
+            <label for="Pic2">Picture 2:</label><br>
+            <input type="file" id="Pic2" name="Pic2"><br>
+            <label for="Pic3">Picture 3:</label><br>
+            <input type="file" id="Pic3" name="Pic3"><br>
+
+      </div>
+
+      <input type="submit" class="btn btn-warning">
+  </form>
+</div>

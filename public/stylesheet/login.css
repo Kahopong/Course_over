@@ -1,47 +1,48 @@
-
 /*navbar*/
-.navi {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #40BAB3;
-}
-.navi1{
-  padding-left: 100px;
 
+.navi {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #40BAB3;
 }
-.navi2{
-  padding-right: 100px;
+
+.navi1 {
+    padding-left: 100px;
 }
+
+.navi2 {
+    padding-right: 100px;
+}
+
 li {
-  float: left;
+    float: left;
 }
+
 li a {
-  display: block;
-  padding: 8px;
-  color: white;
-  text-decoration: none;
+    display: block;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
 }
+
 li a:hover {
-  color: white;
+    color: white;
 }
+
 
 /*login*/
-/* .card{
-    border-color: white;
-    font-size: 20px;
-    margin: 100px 100px 50px 100px;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-} */
+
 .login_card {
     border-color: white;
     font-size: 20px;
-    margin: 100px;
+    margin: 100px 100px 50px 100px;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
+
 .card2 {
     border: 2px solid #40BAB3;
     border-top-left-radius: 30px;
@@ -127,7 +128,8 @@ li a:hover {
     text-align: center;
     margin-bottom: 40px;
 }
-.btnlogin{
+
+.btnlogin {
     border-radius: 20px;
     background-color: #F5C508;
     margin-left: 7%;
@@ -135,7 +137,8 @@ li a:hover {
     font-size: 15px;
     border-color: #F5C508;
 }
-.card3{
+
+.card3 {
     background-color: #030E4C;
     border-radius: 5px;
     border-top-right-radius: 30px;
@@ -194,25 +197,22 @@ input:checked+.slider {
 
 input:focus+.slider {
     box-shadow: 0 0 1px #030E4C;
-  }
-  
-  .switch {
-  
+}
+
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
-   
-  }
-  
-  .switch input { 
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-    
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -234,12 +234,13 @@ input:focus+.slider {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  input:before+.slider:before{
+}
+
+input:before+.slider:before {
     background-color: #030E4C;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #030E4C;
 }
 
@@ -251,17 +252,19 @@ input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
+}
+
+
+/* Rounded sliders */
+
 .slider.round {
     border-radius: 34px;
-  }
-  
+}
+
 .slider.round:before {
     border-radius: 50%;
-  }
+}
 
-h3{
-   text-align: center;
+h3 {
+    text-align: center;
 }

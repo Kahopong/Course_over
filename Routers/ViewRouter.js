@@ -20,13 +20,13 @@ class ViewRouter {
             })
         })
 
-     
+
         router.get('/signup', (req, res) => {
-            res.render('signup')
+            res.render('login/signup', { layout: 'login_main' })
         })
 
         router.get('/shopsignup', (req, res) => {
-            res.render('shopsignup')
+            res.render('login/shopsignup', { layout: 'login_main' })
         })
 
         router.get('/error', (req, res) => {
