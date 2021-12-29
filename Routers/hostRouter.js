@@ -15,45 +15,71 @@ class HostRouter {
         return router;
     }
 
-    // GET Method
-    // ==================================
-    get(req, res) {
-        return this.hostService
-            .listCourse(1)
-            .then((course) => {
-                res.json(course);
-            })
-            .catch((err) => {
-                res.status(500);
-                return res.json(err);
-            });
-    }
+  // GET Method - list
+  // ==================================
+  get(req, res) {
+    return this.hostService
+      .listCourse(1)
+      .then((data) => {
+        console.log(req);
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 
-    // POST Method
-    // ==================================
-    post(req, res) {
-        return this.hostService.addCourse(1, req.body.add).then((course) => {
-            res.json(course);
-        })
-    }
+  // POST Method
+  // ==================================
+  post(req, res) {
+    return this.hostService
+      .addCourse(1, req.body.course)
+      .then(() => {
+        return this.hostService.listCourse(1);
+      })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 
-    // PUT Method  req.params.courseId
-    // ==================================
-    put(req, res) {}
+  // PUT Method
+  // ==================================
+  put(req, res) {
+    return this.hostService
+      .editCourse(req.params.courseId, req.body.course, 1)
+      .then(() => {
+        return this.hostService.listCourse(1);
+      })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 
-    // DELETE Method  req.params.courseId
-    // ==================================
-    delete(req, res) {
-        return this.hostService.removeCourse(1, req.params.courseId).then(() => {
-            return this.hostService.listCourse(1).then((course) => {
-                res.json(course);
-            })
-        }).catch((err) => {
-            res.status(500);
-            console.log(err)
-            return res.json(err);
-        });
-    }
+  // DELETE Method
+  // ==================================
+  delete(req, res) {
+    return this.hostService
+      .removeCourse(1, req.params.courseId)
+      .then(() => {
+        return this.hostService.listCourse(1);
+      })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+  }
 }
 
 module.exports = HostRouter;

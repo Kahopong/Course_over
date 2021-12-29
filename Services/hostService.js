@@ -2,101 +2,90 @@
 //list, add, delete, edit
 
 class HostService {
-    constructor(knex) {
-        this.knex = knex;
-    }
+  constructor(knex) {
+    this.knex = knex;
+  }
 
-    listCourse(id) {
-        return this.knex("course")
-            .select("*")
-            .where("shop_id", id)
-            .then((data) => {
-                if (data.length > 0) {
-                    return this.knex("course")
-                        // .join("shop", "shop.id", "=", "shop_id")
-                        .select("*")
-                        .where("shop_id", id);
-                } else {
-                    throw new Error("Shop not existing, cannot list course.");
-                }
-            });
-    }
+  listCourse(id) {
+    return this.knex("course")
+      .select("*")
+      .where("shop_id", id)
+      .then((data) => {
+        if (data.length > 0) {
+          return this.knex("course").select("*").where("shop_id", id);
+        } else {
+          throw new Error("Shop not existing, cannot list course.");
+        }
+      });
+  }
 
-    addCourse(id, addInfo) {
-        return this.knex("shop")
-            .select("id")
-            .from("shop")
-            .where("id", id)
-            .then((data) => {
-                console.log("Add course", data);
-                if (data.length === 1) {
-                    return this.knex("course")
-                        .insert({
-                            shop_id: data[0].id,
-                            title: addInfo.title,
-                            category: addInfo.category,
-                            date: addInfo.date,
-                            timeStart: addInfo.timeStart,
-                            timeEnd: addInfo.timeEnd,
-                            price: addInfo.price,
-                            quota: addInfo.quota,
-                            ageRange: addInfo.ageRange,
-                        })
-                        .into("course");
-                } else {
-                    throw new Error(`Cannot add a course when the user doesn't exist!`);
-                }
-            });
-    }
+  addCourse(id, addInfo) {
+    return this.knex("shop")
+      .select("id")
+      .from("shop")
+      .where("id", id)
+      .then((data) => {
+        console.log("Add course", data);
+        if (data.length === 1) {
+          return this.knex("course")
+            .insert({
+              shop_id: data[0].id,
+              title: addInfo.title,
+              category: addInfo.category,
+              date: addInfo.date,
+              timeStart: addInfo.timeStart,
+              timeEnd: addInfo.timeEnd,
+              price: addInfo.price,
+              quota: addInfo.quota,
+              ageRange: addInfo.ageRange,
+              listing: true,
+            })
+            .into("course");
+        } else {
+          throw new Error(`Cannot add a course when the user doesn't exist!`);
+        }
+      });
+  }
 
-    removeCourse(id, course_id) {
-        return this.knex("shop")
-            .select("id")
-            .from("shop")
-            .where("id", id)
-            .then((data) => {
-                if (data.length === 1) {
-                    return this.knex("course_pic")
-                        .where("course_id", course_id)
-                        .del()
-                        .then(() => {
-                            return this.knex("course_para")
-                                .where("course_id", course_id)
-                                .del()
-                                .then(() => {
-                                    return this.knex("course").where("id", course_id).del();
-                                });
-                        });
-                } else {
-                    throw new Error(
-                        `Cannot remove a course when the shop doesn't exist!`
-                    );
-                }
-            });
-    }
+  editCourse(course_id, edit, id) {
+    return this.knex("shop")
+      .select("*")
+      .where("id", id)
+      .then((data) => {
+        if (data.length > 0) {
+          return this.knex("course").where("id", course_id).update({
+            title: edit.title,
+            category: edit.category,
+            date: edit.date,
+            timeStart: edit.timeStart,
+            timeEnd: edit.timeEnd,
+            price: edit.price,
+            quota: edit.quota,
+            ageRange: edit.ageRange,
+          });
+        } else {
+          throw new Error("Shop not existing, cannot edit info.");
+        }
+      });
+  }
 
-    editCourse(course_id, edit, id) {
-        return this.knex("shop")
-            .select("*")
-            .where("id", id)
-            .then((data) => {
-                console.log(data);
-                if (data.length > 0) {
-                    return this.knex("course").where("id", course_id).update({
-                        title: edit.title,
-                        category: edit.category,
-                        date: edit.date,
-                        timeStart: edit.timeStart,
-                        timeEnd: edit.timeEnd,
-                        price: edit.price,
-                        quota: edit.quota,
-                        ageRange: edit.ageRange,
-                    });
-                } else {
-                    throw new Error("Shop not existing, cannot edit info.");
-                }
-            });
-    }
+  removeCourse(id, course_id) {
+    return this.knex("shop")
+      .select("id")
+      .from("shop")
+      .where("id", id)
+      .then((data) => {
+        if (data.length === 1) {
+          return this.knex("course").where("id", course_id).update({
+            listing: false,
+          });
+        } else {
+          throw new Error(
+            `Cannot remove a course when the shop doesn't exist!`
+          );
+        }
+      });
+  }
 }
 
 module.exports = HostService;
