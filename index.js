@@ -34,7 +34,7 @@ const passport = require('passport')
 
 const app = express()
 app.set('view engine', 'handlebars')
-app.engine('handlebars', engine({ defaultLayout: 'main' }))
+app.engine('handlebars', engine({ defaultLayout: 'shop_main' }))
 
 require('dotenv').config()
 app.use(express.json())
@@ -77,7 +77,7 @@ app.use("/", new ViewRouter(passport, express).router())
 
 
 app.get("/", (req, res) => {
-    res.render('index')
+    res.render('usershb/index', { layout: 'users_main' })
 });
 
 // Listen to port

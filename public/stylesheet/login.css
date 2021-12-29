@@ -1,30 +1,28 @@
-.card{
+.login_card {
     border-color: white;
     font-size: 20px;
     margin: 100px;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
-   
 }
-.card2{
+
+.card2 {
     border: 2px solid #40BAB3;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-   
 }
-.signin{
+
+.signin {
     background-color: #40BAB3;
     padding: 20px;
     color: white;
     align-items: center;
     text-align: center;
     border-top-left-radius: 27px;
-    
-
-    
 }
-#Uname{
+
+#Uname {
     margin-left: 60px;
     margin-right: 60px;
     margin-top: 60px;
@@ -34,7 +32,8 @@
     padding-right: 60px;
     font-size: 12px;
 }
-#Pword{
+
+#Pword {
     margin-left: 60px;
     margin-right: 60px;
     margin-top: 30px;
@@ -44,12 +43,14 @@
     padding-left: 20px;
     padding-right: 60px;
 }
-.forgotp{
+
+.forgotp {
     font-size: 12px;
     padding-left: 120px;
 }
-.card1_2{
-    display:flex;
+
+.card1_2 {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -57,50 +58,55 @@
     font-size: 12px;
     margin-top: 40px;
 }
-.btn1{
-    background-color:#40BAB3;
-    width:60%;  
-    margin-top:40px;
+
+.btn1 {
+    background-color: #40BAB3;
+    width: 60%;
+    margin-top: 40px;
     border-radius: 20px;
 }
-.btn2{
-    background-color:#40BAB3;  
-    width:60%;  
-    margin-top:40px;
+
+.btn2 {
+    background-color: #40BAB3;
+    width: 60%;
+    margin-top: 40px;
     border-radius: 20px;
 }
-.joinc{
+
+.joinc {
     text-align: center;
 }
-.hostc{
+
+.hostc {
     text-align: center;
 }
-.btn3{
-    width:60%;  
-    margin-top:40px;
+
+.btn3 {
+    width: 60%;
+    margin-top: 40px;
     border-radius: 20px;
     font-size: 12px;
 }
-.btnsignin{
+
+.btnsignin {
     text-align: center;
     margin-bottom: 40px;
 }
-.card3{
+
+.card3 {
     background-color: #030E4C;
     border-radius: 5px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-  
 }
-.create{
+
+.create {
     padding: 20px;
     margin-left: 80px;
     margin-right: 80px;
     color: white;
     align-items: center;
     text-align: center;
-
-    
 }
 
 .switch {
@@ -108,15 +114,15 @@
     display: inline-block;
     width: 60px;
     height: 34px;
-  }
-  
-  .switch input { 
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -126,9 +132,9 @@
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -138,30 +144,30 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color:#030E4C;
-  }
-  
-  input:focus + .slider {
+}
+
+input:checked+.slider {
+    background-color: #030E4C;
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #030E4C;
-  }
-  
-  .switch {
+}
+
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
-  }
-  
-  .switch input { 
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -171,9 +177,9 @@
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -183,36 +189,40 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #030E4C;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #030E4C;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}

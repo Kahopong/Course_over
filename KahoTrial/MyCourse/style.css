@@ -1,0 +1,76 @@
+:root {
+    --color1: #40BAB3;
+    --color2: #030E4C;
+    --color3: #FFD335;
+    --color4: #CD0000;
+    --color5: #297373;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    color: var(--color2)
+}
+
+.myCourse {
+    width: 60%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.myCourse .card-container {
+    margin: 10px 0px;
+}
+
+.myCourse .card {
+    border-radius: 10px;
+}
+
+.myCourse .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.myCourse .heart_icon_title,
+.myCourse .book_icon {
+    color: var(--color1)
+}
+
+.myCourse .heart_icon {
+    color: red
+}
+
+.myCourse .block {
+    margin-bottom: 50px;
+}
+
+.footer {
+    min-height: 35vh;
+    background-color: var(--color1);
+    color: white;
+    padding: 20px;
+}
+
+.footer .logo {
+    margin-bottom: 10px;
+}
+
+.footer-content {
+    width: 70%;
+}
+
+.footer .footer-content p,
+.footer .footer-content h5 {
+    line-height: 1.5;
+}
+
+.footer .footer-content h5 {
+    margin-bottom: 20px;
+}
+
+.footer .copyright {
+    margin-top: 10px;
+}

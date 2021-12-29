@@ -15,7 +15,7 @@ body {
 }
 
 .jumbotron-fluid {
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('./lego.jpeg');
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../lego.jpeg');
     min-height: 35vh;
     background-size: cover;
     background-repeat: no-repeat;
@@ -122,6 +122,6 @@ body {
     margin-top: 10px;
 }
 
-.footer div {
-    border: 2px solid red
+.footer .middle_row {
+    margin-left: 5px;
 }

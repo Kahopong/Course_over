@@ -1,0 +1,75 @@
+{{!-- 3 buttons --}}
+
+<section id='section1'>
+        <div class='stats container d-flex justify-content-between'>
+            <a href='/edit_shop_info'>
+            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <img class='companyLogo' src='lego.jpeg'>
+                <p id='company_name'> req.passport company name</p>
+            </div>
+            </a>
+            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <p>Listing Course</p>
+                <h1 id='listing_course_num'>10</h1>
+            </div>
+            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <p>Course Completed</p>
+                <h1 id='course_completed_num'>-1</h1>
+            </div>
+        </div>
+    </section>
+
+{{!-- Courses Table --}}
+    <section id='section2'>
+        <div class='host container'>
+            <a href='/add_course'><button class='newbtn'><i class="fas fa-plus"></i> &nbsp;&nbsp;NEW COURSE</button></a>
+            
+            <div class='table_container'>
+                <table class='host_table'>
+                    <col style="width:45%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                    <thead>
+                        <tr class='header'>
+                            <th>Course Name</th>
+                            <th>Date</th>
+                            <th>Quota</th>
+                            <th>Functions</th>
+                        </tr>
+                    </thead>
+                    <tbody id='tbody'>
+                        
+                        <tr>
+                            <td>Flower Watercolour Workshop</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Acrylic Galaxy Painting</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Sketching Class</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Art jamming</td>
+                            <td>2021-12-01</td>
+                            <td>2/10</td>
+                            <td><i class="far fa-edit"></i>&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        <div id='courses'></div>
+        <p style='color:red' id='delete_msg'></p>
+        </div>
+
+    </section>

@@ -39,7 +39,10 @@ class BookService {
     list(course_id) {
         return this.knex('course').select('*').where({ id: course_id }).then((info) => {
             if (info.length > 0) {
-                return this.knex('user_booking').select('*').where({ course_id: course_id })
+                return this.knex('user_booking')
+                    .select('user_booking.*', 'username', 'surname', 'firstName', 'tel', 'sex', 'dob')
+                    .join('users', 'user_booking.users_id', 'users.id')
+                    .where({ course_id: course_id })
             } else {
                 throw new Error('Course does not exist.')
             }
@@ -63,4 +66,4 @@ let bookService = new BookService(knex);
 // bookService.unbook(1, 5).then(() => knex('user_booking').select('*')).then((data) => console.log(data))
 // bookService.book(1, 6).then(() => bookService.list(6)).then((data) => console.log(data))
 // bookService.unbook(1, 6).then(() => bookService.list(6)).then((data) => console.log(data))
-// bookService.list(1).then((data) => console.log(data))
+// bookService.list(2).then((data) => console.log(data))

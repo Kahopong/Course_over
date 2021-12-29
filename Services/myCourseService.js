@@ -5,21 +5,21 @@ class MyCourseService {
     constructor(knex) {
         this.knex = knex
     }
-    
-    listbooking(user_id){
+
+    listbooking(user_id) {
         this.knex.select('*')
-        .from('user_booking')
-        .join("course","user_booking.course_id","course.id")
-        .where("users_id",user_id)
-        .then(data => console.log(data))
+            .from('user_booking')
+            .join("course", "user_booking.course_id", "course.id")
+            .where("users_id", user_id)
+            .then(data => console.log(data))
     }
 
-    listfav(user_id){
+    listfav(user_id) {
         this.knex.select('*')
-        .from('user_favorite')
-        .join("course","user_favorite.course_id","course.id")
-        .where("users_id",user_id)
-        .then(data => console.log(data))
+            .from('user_favorite')
+            .join("course", "user_favorite.course_id", "course.id")
+            .where("users_id", user_id)
+            .then(data => console.log(data))
     }
 
 
@@ -35,5 +35,4 @@ const knex = require('knex')(knexFile);
 let myCourseService = new MyCourseService(knex);
 
 // myCourseService.listbooking(2)
-myCourseService.listfav(1)
-    
+// myCourseService.listfav(1)

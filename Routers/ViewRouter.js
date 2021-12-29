@@ -11,25 +11,25 @@ class ViewRouter {
     router() {
         let router = this.express.Router();
 
+        //Login Signup handlebars
+
         router.get('/login', (req, res) => {
-            res.render('login', {
-                message: req.flash('success')
+            res.render('login/login', {
+                message: req.flash('success'),
+                layout: 'login_main'
             })
         })
 
         router.get('/signup', (req, res) => {
-            res.render('signup')
-        })
-
-        router.get('/error', (req, res) => {
-            res.render('error', {
-                error: req.flash('error')
-            })
+            res.render('login/signup', { layout: 'login_main' })
         })
 
         router.get('/index', auth.isLoggedIn, (req, res) => {
             console.log(`${req.session.passport.user.username} logged in`)
-            res.render('index', { user: req.session.passport.user.username })
+            res.render('usershb/index', {
+                user: req.session.passport.user.username,
+                layout: 'users_main'
+            })
         })
 
         router.post('/signup', this.passport.authenticate('local-signup', {
@@ -50,6 +50,32 @@ class ViewRouter {
             req.logout();
             res.redirect('/')
         })
+
+        //Shop side handlebars (default)
+        router.get('/dashboard', (req, res) => {
+            res.render('shophb/dashboard')
+        })
+
+        router.get('/edit_shop_info', (req, res) => {
+            res.render('shophb/edit_shop_info')
+        })
+
+        router.get('/add_course', (req, res) => {
+            res.render('shophb/add_course')
+        })
+
+        router.get('/edit_course', (req, res) => {
+            res.render('shophb/edit_course')
+        })
+
+        router.get('/list_booking', (req, res) => {
+            res.render('shophb/list_booking')
+        })
+
+        //User side handlebars
+        // res.render('__FILL_ME_IN__', { layout: 'users_main' })
+
+
         return router;
     }
 }
