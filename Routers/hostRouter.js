@@ -18,16 +18,16 @@ class HostRouter {
   // GET Method
   // ==================================
   get(req, res) {
-    return this.hostService
-      .listCourse(req.)
-      .then((courseArr) => {
-        let course = courseArr.map((a) => a["course"]);
-        res.json(course);
-      })
-      .catch((err) => {
-        res.status(500);
-        return res.json(err);
-      });
+    // return this.hostService
+    //   .listCourse(1)
+    //   .then((courseArr) => {
+    //     let course = courseArr.map((a) => a["course"]);
+    //     res.json(course);
+    //   })
+    //   .catch((err) => {
+    //     res.status(500);
+    //     return res.json(err);
+    //   });
   }
 
   // POST Method

@@ -1,0 +1,40 @@
+.form2{
+    margin:100px;
+    border: 2px solid #40BAB3;
+    border-radius: 30px;;
+}
+.BeourH{
+    background-color: #40BAB3;
+    padding: 20px;
+    color: white;
+    align-items: center;
+    text-align: center;
+    border-top-left-radius: 27px;
+    border-top-right-radius: 27px;
+}
+.row{
+    padding-left:20%;
+}
+
+.row2{
+    padding-top: 70px;
+}
+.row3{
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+#email2,#password2,#CompanyN,#Tel2{
+    border-radius: 30px;
+    background-color: #DFDFDF;
+    border-color:#DFDFDF ;
+    width: 60%;
+}
+
+.btn-warning{
+    margin-left: 40%;
+    width: 20%;
+    border-radius: 30px;
+    margin-top: 80px;
+    margin-bottom: 60px;;
+  
+  }

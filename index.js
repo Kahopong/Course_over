@@ -67,6 +67,10 @@ const hostService = new HostService(knex);
 const infoService = new InfoService(knex);
 const myCourseService = new MyCourseService(knex);
 
+app.get('/logout', (req, res)=>{
+    res.send('logout!!!!!!')
+})
+
 app.use("/book", new BookRouter(bookService, express).router())
 app.use("/display", new DisplayRouter(displayService, express).router())
 app.use("/fav", new FavRouter(favService, express).router())
@@ -76,8 +80,9 @@ app.use("/myCourse", new MyCourseRouter(myCourseService, express).router())
 app.use("/", new ViewRouter(passport, express).router())
 
 
+
 app.get("/", (req, res) => {
-    res.render('index')
+    res.render('login')
 });
 
 // Listen to port

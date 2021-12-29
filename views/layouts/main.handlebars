@@ -18,13 +18,14 @@
     <link href="notes.css" rel="stylesheet">
      <link rel="stylesheet" href="./login.css">
     <link rel="stylesheet" href="./signup.css">
+    <link rel="stylesheet" href="./shopsignup.css">
+    <link rel="stylesheet" href="./Addcourse.css">
     <!--Relative path!!!!!! From localhost (when you serve the public folder)-->
 </head>
 
 <body>
 
-    
-        
+   
 
         {{{ body }}}
 
@@ -46,13 +47,14 @@
     <script>
         let logoutButton = document.getElementById('logout')
         logoutButton.addEventListener("click", () => {
-            $.get('/logout', function(data) {
+             $.get('/logout', function(data) {
                 console.log(data)
                 window.location.reload();
             })
         })
     </script>
     <script src="notes.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,36 @@
+/*navbar*/
+.navi {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #40BAB3;
+}
+.navi1{
+  padding-left: 100px;
+
+}
+.navi2{
+  padding-right: 100px;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}
+li a:hover {
+  color: white;
+}
+
+/*login*/
 .card{
     border-color: white;
     font-size: 20px;
-    margin: 100px;
+    margin: 100px 100px 50px 100px;
     display:flex;
     flex-direction: row;
     justify-content: center;
@@ -85,6 +114,14 @@
     text-align: center;
     margin-bottom: 40px;
 }
+.btnlogin{
+    border-radius: 20px;
+    background-color: #F5C508;
+    margin-left: 7%;
+    margin-top: 10%;
+    font-size: 15px;
+    border-color: #F5C508;
+}
 .card3{
     background-color: #030E4C;
     border-radius: 5px;
@@ -149,16 +186,19 @@
   }
   
   .switch {
+  
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
+   
   }
   
   .switch input { 
     opacity: 0;
     width: 0;
     height: 0;
+    
   }
   
   .slider {
@@ -184,6 +224,9 @@
     -webkit-transition: .4s;
     transition: .4s;
   }
+  input:before+.slider:before{
+    background-color: #030E4C;
+  }
   
   input:checked + .slider {
     background-color: #030E4C;
@@ -200,19 +243,14 @@
   }
   
   /* Rounded sliders */
-  .slider.round {
+.slider.round {
     border-radius: 34px;
   }
   
-  .slider.round:before {
+.slider.round:before {
     border-radius: 50%;
   }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+
+h3{
+   text-align: center;
+}

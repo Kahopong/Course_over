@@ -18,8 +18,10 @@ class InfoRouter {
     // ==================================
     getUsers(req, res) {
         return (this.infoService.listUser(2)
-            .then((data) => {
-                res.json(data)
+        .then((data) => {
+            console.log('hello');
+                console.log(req.session);
+                res.json(data);
             })
             .catch((err) => {
                 res.status(500)

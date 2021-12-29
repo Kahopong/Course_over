@@ -103,7 +103,7 @@ module.exports = HostService;
 
 //For trying individual js files
 
-const knexFile = require("/Users/likingyan/trial/knexfile").development;
+const knexFile = require("../knexfile").development;
 const knex = require("knex")(knexFile);
 let hostService = new HostService(knex);
 
@@ -123,7 +123,7 @@ let hostService = new HostService(knex);
 //   hostService.listCourse(1).then((a) => console.log(a));
 // });
 
-hostService.removeCourse(3, 5).then((data) => console.log(data));
+// hostService.removeCourse(3, 5).then((data) => console.log(data));
 
 // let editCourse = {
 //   title: `sketching`,

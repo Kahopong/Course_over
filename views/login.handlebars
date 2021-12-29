@@ -3,12 +3,15 @@
 
     <div class="card">
         <div class="card2">
+    
+
              <div class="signin">Sign In</div>
              <form action="login" method="post">
                 <input type="text" id="Uname" name="username" placeholder="username"><br>
-                <input type="text" id="Pword" name="password" placeholder="password">
+                <input type="password" id="Pword" name="password" placeholder="password">
           
              <div class="forgotp">
+   
                  <div>Forgot  <a href="url">Username/Password?</a></div>
                
              </div>
@@ -24,7 +27,7 @@
            
             <div class="btnsignin">
              {{!-- <button type="button" class="btn btn-warning btn3" >SIGN IN</button> --}}
-              <input type="submit" value="Sign up"/>
+              <input type="submit"  value="Sign up" class="btnlogin"/>
                
             </div>
                </form>
@@ -32,16 +35,16 @@
         <div class="card3">
             <div class="create">Create Account</div>
             <div class="joinc">
-            <button type="button" class="btn btn-success btn1">I want to join a course</button>
+            <a type="button" class="btn btn-success btn1" href="/signup">I want to join a course</a>
             </div>
             <div class="hostc">
-            <button type="button" class="btn btn-success btn2">I want to host a course</button>
+            <a type="button" class="btn btn-success btn2" href="/shopsignup">I want to host a course</a>
             </div>
         </div>
-
-      
+    
     </div>
-        {{#if error}}
+    <h3>testing</h3>
+                      {{#if error}}
     <h3>{{error}}</h3>
     {{/if}}
     
