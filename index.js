@@ -25,20 +25,21 @@ const knex = require("knex")(knexFile);
 
 //Configure express, handlebars
 //=============================
-const express = require('express')
-const { engine } = require('express-handlebars');
-const flash = require('connect-flash');
-const session = require('express-session')
-const passport = require('passport')
+const express = require("express");
+const { engine } = require("express-handlebars");
+const flash = require("connect-flash");
+const session = require("express-session");
+const passport = require("passport");
 
-const app = express()
-app.set('view engine', 'handlebars')
-app.engine('handlebars', engine({ defaultLayout: 'shop_main' }))
+const app = express();
+app.set("view engine", "handlebars");
+app.engine("handlebars", engine({ defaultLayout: "shop_main" }));
 
-require('dotenv').config()
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(session({
+require("dotenv").config();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(
+  session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
@@ -72,9 +73,8 @@ app.use("/info", new InfoRouter(infoService, express).router());
 app.use("/myCourse", new MyCourseRouter(myCourseService, express).router());
 app.use("/", new ViewRouter(passport, express).router());
 
-
 app.get("/", (req, res) => {
-    res.render('usershb/index', { layout: 'users_main' })
+  res.render("usershb/index", { layout: "users_main" });
 });
 
 // Listen to port

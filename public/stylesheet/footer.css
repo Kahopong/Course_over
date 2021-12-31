@@ -1,0 +1,43 @@
+:root {
+  --color1: #40bab3;
+  --color2: #030e4c;
+  --color3: #ffd335;
+  --color4: #cd0000;
+  --color5: #297373;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  color: var(--color2);
+}
+
+.footer {
+  min-height: 35vh;
+  background-color: var(--color1);
+  color: white;
+  padding: 20px;
+}
+
+.footer .logo {
+  margin-bottom: 10px;
+}
+
+.footer-content {
+  width: 70%;
+}
+
+.footer .footer-content p,
+.footer .footer-content h5 {
+  line-height: 1.5;
+}
+
+.footer .footer-content h5 {
+  margin-bottom: 20px;
+}
+
+.footer .copyright {
+  margin-top: 10px;
+}

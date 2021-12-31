@@ -1,27 +1,26 @@
 class HostRouter {
-    constructor(hostService, express) {
-        this.hostService = hostService;
-        this.express = express;
-    }
+  constructor(hostService, express) {
+    this.hostService = hostService;
+    this.express = express;
+  }
 
-    router() {
-        let router = this.express.Router();
-        // example
-        // router.get('/', this.get.bind(this))
-        router.get("/shop", this.get.bind(this));
-        router.post("/shop", this.post.bind(this));
-        router.put("/shop/:courseId", this.put.bind(this));
-        router.delete("/shop/:courseId", this.delete.bind(this));
-        return router;
-    }
+  router() {
+    let router = this.express.Router();
+    // example
+    // router.get('/', this.get.bind(this))
+    router.get("/shop", this.get.bind(this));
+    router.post("/shop", this.post.bind(this));
+    router.put("/shop/:courseId", this.put.bind(this));
+    router.delete("/shop/:courseId", this.delete.bind(this));
+    return router;
+  }
 
   // GET Method - list
   // ==================================
   get(req, res) {
     return this.hostService
-      .listCourse(1)
+      .listCourse(req.session.passport.user.id)
       .then((data) => {
-        console.log(req);
         res.json(data);
       })
       .catch((err) => {
