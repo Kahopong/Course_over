@@ -50,13 +50,20 @@ class DisplayService {
     
 
     sort(sorting) {
-        return this.knex('course').select('*').where(sorting).then((info) => {
-            if (info.length == 0) {
-                throw new Error('No Courses to display')
-            } else {
-                return info
-            }
-        })
+        return this.knex('course').select('*')
+            .whereIn('category', sorting.category)
+            .andWhere(function() {
+                this.orWhereBetween(
+                    'price', [150, 200],
+                )
+            })
+            .then((info) => {
+                if (info.length == 0) {
+                    throw new Error('No Courses to display')
+                } else {
+                    return info
+                }
+            })
     }
 
 }
@@ -70,7 +77,7 @@ const knexFile = require('../knexfile').development;
 const knex = require('knex')(knexFile);
 let displayService = new DisplayService(knex);
 
-displayService.listcourse(3).then((info) => console.log(info))
-// displayService.sort({}).then((info) => console.log(info))
-// console.log(displayService.list())
-// console.log(displayService.listcourse(3))
+// displayService.list().then((info) => console.log(info))
+displayService.sort({
+    category: ['Sports', 'Art'],
+}).then((info) => console.log(info))
