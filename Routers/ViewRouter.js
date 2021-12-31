@@ -43,6 +43,14 @@ class ViewRouter {
             })
         })
 
+        router.get('/index/course', auth.isLoggedIn, (req, res) => {
+            console.log(`${req.session.passport.user.username} logged in`)
+            res.render('usershb/courseinfo', {
+                user: req.session.passport.user.username,
+                layout: 'users_main'
+            })
+        })
+
         router.post('/signup', this.passport.authenticate('local-signup', {
             successFlash: true,
             successRedirect: '/login',

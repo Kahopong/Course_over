@@ -21,7 +21,7 @@ class HostRouter {
     return this.hostService
       .listCourse(1)
       .then((data) => {
-        console.log(req);
+        // console.log(req);
         res.json(data);
       })
       .catch((err) => {

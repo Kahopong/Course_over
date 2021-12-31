@@ -34,4 +34,4 @@ const knex = require("knex")(knexFile);
 let myCourseService = new MyCourseService(knex);
 
 // myCourseService.listbooking(2)
-// myCourseService.listfav(1)
+myCourseService.listfav(1)
