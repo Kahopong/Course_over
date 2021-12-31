@@ -7,6 +7,7 @@ class DisplayRouter {
     router() {
         let router = this.express.Router();
         router.get('/', this.get.bind(this))
+        router.get('/:id', this.getcourse.bind(this))
         router.post('/', this.post.bind(this))
         return router;
     }
@@ -24,6 +25,16 @@ class DisplayRouter {
             }));
     }
 
+    getcourse(req, res){
+        return (this.displayService.listcourse(req.param.id)
+        .then((data) => {
+            res.json(data)
+        })
+        .catch((err)=> {
+            res.status(500)
+            return res.json(err)
+        }))
+    }
 
     // Sorting Courses
     // ==================================

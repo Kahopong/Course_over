@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({path:'/Users/martinh/Desktop/courseover/Course_over/.env'});
 
 module.exports = {
     development: {
