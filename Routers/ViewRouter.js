@@ -35,10 +35,17 @@ class ViewRouter {
             })
         })
 
-        router.get('/index', auth.isLoggedIn, (req, res) => {
-            console.log(`${req.session.passport.user.username} logged in`)
+        // router.get('/index', auth.isLoggedIn, (req, res) => {
+        //     console.log(`${req.session.passport.user.username} logged in`)
+        //     res.render('usershb/index', {
+        //         user: req.session.passport.user.username,
+        //         layout: 'users_main'
+        //     })
+        // })
+        router.get('/index', (req, res) => {
+            // console.log(`${req.session.passport.user.username} logged in`)
             res.render('usershb/index', {
-                user: req.session.passport.user.username,
+
                 layout: 'users_main'
             })
         })

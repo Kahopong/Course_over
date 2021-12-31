@@ -69,7 +69,7 @@ $(() => {
         axios.post('/host/shop', {
             add: addCourse
         }).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             $('#success_add_msg').html(`Your course '${addCourse.title}' has been added`)
         })
     })
@@ -77,7 +77,7 @@ $(() => {
     //edit course
     //displaying orignal info
     axios.get('/host/shop').then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         let editCourse = res.data.find((course) => course.id == sessionStorage.getItem('edit_course_id'))
         $('#edit_course_form').html(courseEditFunction(editCourse))
         console.log(editCourse)

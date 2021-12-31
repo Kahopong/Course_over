@@ -1,4 +1,3 @@
-
 <section id='section1'>
         <div class='jumbotron-fluid d-flex align-items-center justify-content-center'>
             <div class='slogan container-fluid'>
@@ -8,7 +7,66 @@
                 <button class='explore'>Explore More</button>
             </div>
         </div>
-    </section>
+</section>
+
+{{!-- filter form trial --}}
+<section id='section0'>
+    <div class='filter_form container'>
+    <h4>Filter</h4>
+        <form class="filter row" id="filter_form">
+             <div class="category col-lg-3">
+                    <h5>Category</h5>
+                    <div class="checkbox">
+                        <label><input name="category" type="checkbox" value="Sports"/>Sports</label>
+                    </div>
+                    <div class="checkbox">
+                         <label><input name="category" type="checkbox" value="School Subjects"/>Academic Subjects</label>
+                    </div>
+                    <div class="checkbox">
+                         <label><input name="category" type="checkbox" value="Art"/>Art</label>
+                    </div>  
+            </div>
+            {{!-- <div class="price col-lg-3">
+                    <h5>Price</h5>
+                    <div class="checkbox">
+                        <label><input name="price" type="checkbox" value='0'/>$0 - $99</label>
+                    </div>
+                    <div class="checkbox">
+                         <label><input name="price" type="checkbox" value='100'/>$100 - $199</label>
+                    </div>
+                    <div class="checkbox">
+                         <label><input name="price" type="checkbox" value='200'/>$200 - $299</label>
+                    </div>  
+                    <div class="checkbox">
+                         <label><input name="price" type="checkbox" value='300'/>$300+</label>
+                    </div>  
+            </div> --}}
+            <div>
+        <input type="text" class="sliderValue" data-index="0" value="10" />
+        <input type="text" class="sliderValue" data-index="1" value="90" />
+    </div>
+    <br />
+    <div id="slider"></div>
+            
+            <div class="age col-lg-3">
+                    <h5>Age</h5>
+                    <div class="checkbox">
+                        <label><input name="age" type="checkbox" value="kids"/>Kids (0-12years)</label>
+                    </div>
+                    <div class="checkbox">
+                         <label><input name="age" type="checkbox" value="junior"/>Junior (13-18years)</label>
+                    </div>
+                    <div class="checkbox">
+                         <label><input name="age" type="checkbox" value="adults"/>Adults (19-65years)</label>
+                    </div>  
+                    <div class="checkbox">
+                         <label><input name="age" type="checkbox" value="senior"/>Senior (65+years)</label>
+                    </div>  
+            </div>
+    <input type="submit" value="submit" style='width:100px;'/>
+  </form>
+</div>
+</section>
     <section id='section2'>
         <div class='categories container-fluid'>
             <div class='title'>Categories</div>

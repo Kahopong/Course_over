@@ -24,7 +24,7 @@ $(() => {
     axios.get('/host/shop').then((res) => {
 
             // overall info at the top 
-            console.log(res.data)
+            // console.log(res.data)
             $("#company_name").html(res.data[0].company);
             $("#listing_course_num").html(res.data.length);
 

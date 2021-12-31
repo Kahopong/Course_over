@@ -42,8 +42,7 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-  })
-);
+}));
 app.use(flash());
 
 app.use(express.static(__dirname + "/public"));
@@ -79,7 +78,7 @@ app.get("/", (req, res) => {
 
 // Listen to port
 app.listen(port, () => {
-  console.log(`Listening on ${port}`);
+    console.log(`Listening on ${port}`);
 });
 
 module.exports = app;

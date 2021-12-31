@@ -18,7 +18,7 @@ function localLogin() {
     passport.use('local-login', new LocalStrategy({ passReqToCallback: true }, async(req, username, password, done) => {
         if (req.body.host == "true") {
             try {
-                console.log("3222221")
+                // console.log("3222221")
                 let shops = await knex('shop_login').where({ email: username })
                 if (shops.length === 0) {
                     return done(null, false, { message: 'Try Again! This user is not found!' })
@@ -44,8 +44,8 @@ function localLogin() {
 
         } else {
             try {
-                console.log("3222221")
-                console.log('body:', req.body);
+                // console.log("3222221")
+                // console.log('body:', req.body);
                 let users = await knex('user_login').where({ email: username })
                 if (users.length === 0) {
                     return done(null, false, { message: 'Try Again! This user is not found!' })
@@ -94,15 +94,15 @@ function localLogin() {
 
 function localSignup() {
     passport.use('local-signup', new LocalStrategy({ passReqToCallback: true }, async(req, username, password, done) => {
-        console.log(req.body);
+        // console.log(req.body);
         try {
             let users = await knex('user_login').where({ email: username })
             if (users.length !== 0) {
-                console.log("test1")
+                // console.log("test1")
                 return done(null, false, { message: 'This Account is already being used!' })
             }
             // let hash = await hashFunctions.hashPassword(password)
-            console.log("test2")
+            // console.log("test2")
             const newUser = {
                 username: req.body.uname,
                 surname: req.body.sname,
@@ -112,7 +112,7 @@ function localSignup() {
                 sex: req.body.sex
             }
             let userId = await knex('users').insert(newUser).returning('id')
-            console.log(userId)
+                // console.log(userId)
             const newUserlogin = {
                 email: username,
                 password: password,
@@ -135,34 +135,34 @@ function localSignup() {
 }
 
 function localSignup2() {
-    passport.use('local-signup2', new LocalStrategy({passReqToCallback:true}, async(req, username, password, done) => {
-        console.log(req.body);
+    passport.use('local-signup2', new LocalStrategy({ passReqToCallback: true }, async(req, username, password, done) => {
+        // console.log(req.body);
         try {
             let users = await knex('shop_login').where({ email: username })
             if (users.length !== 0) {
-                console.log("test3")
+                // console.log("test3")
                 return done(null, false, { message: 'This Account is already being used!' })
             }
             // let hash = await hashFunctions.hashPassword(password)
-            console.log("test4")
+            // console.log("test4")
             const newUser = {
-                company:req.body.CompanyN,
-                tel:req.body.Tel2,
-                email:username,
-                
+                company: req.body.CompanyN,
+                tel: req.body.Tel2,
+                email: username,
+
             }
             let userId = await knex('shop').insert(newUser).returning('id')
-            console.log(userId)
+                // console.log(userId)
             const newUserlogin = {
                 email: username,
                 password: password,
                 shop_id: userId[0]
-                
+
             }
-            
+
             let userloginId = await knex('shop_login').insert(newUserlogin).returning('id')
             newUserlogin.id = userloginId[0]
-            
+
             done(null, newUserlogin, { message: `Hey ${newUserlogin.username}! You can now login to use the death note!` })
 
 
