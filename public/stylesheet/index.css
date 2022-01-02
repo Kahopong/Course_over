@@ -59,6 +59,16 @@ body {
     object-fit: cover;
     border-radius: 10px 10px 0px 0px;
 }
+.card-container a.course-title:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  .card-container a.course-title:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
 
 
 /* filter function */
