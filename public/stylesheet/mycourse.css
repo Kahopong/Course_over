@@ -20,6 +20,9 @@ body {
   margin-bottom: 100px;
 }
 
+.myCourse .title {
+  border-bottom: 1px solid #cecece;
+}
 .myCourse .card-container {
   margin: 10px 0px;
 }

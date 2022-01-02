@@ -1,270 +1,235 @@
-/*navbar*/
-
-.navi {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #40BAB3;
-}
-
-.navi1 {
-    padding-left: 100px;
-}
-
-.navi2 {
-    padding-right: 100px;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    padding: 8px;
-    color: white;
-    text-decoration: none;
-}
-
-li a:hover {
-    color: white;
-}
-
-
 /*login*/
 
 .login_card {
-    border-color: white;
-    font-size: 20px;
-    margin: 100px 100px 50px 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  border-color: white;
+  font-size: 20px;
+  margin: 100px 100px 50px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .card2 {
-    border: 2px solid #40BAB3;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+  border: 2px solid #40bab3;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .signin {
-    background-color: #40BAB3;
-    padding: 20px;
-    color: white;
-    align-items: center;
-    text-align: center;
-    border-top-left-radius: 27px;
+  background-color: #40bab3;
+  padding: 20px;
+  color: white;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 27px;
 }
 
 #Uname {
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 60px;
-    background-color: #DFDFDF;
-    border-radius: 30px;
-    padding-left: 20px;
-    padding-right: 60px;
-    font-size: 12px;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 60px;
+  background-color: #dfdfdf;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 60px;
+  font-size: 12px;
 }
 
 #Pword {
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 30px;
-    background-color: #DFDFDF;
-    border-radius: 30px;
-    font-size: 12px;
-    padding-left: 20px;
-    padding-right: 60px;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 30px;
+  background-color: #dfdfdf;
+  border-radius: 30px;
+  font-size: 12px;
+  padding-left: 20px;
+  padding-right: 60px;
 }
 
 .forgotp {
-    font-size: 12px;
-    padding-left: 120px;
+  font-size: 12px;
+  padding-left: 120px;
 }
 
 .card1_2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 12px;
-    margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 12px;
+  margin-top: 40px;
 }
 
 .btn1 {
-    background-color: #40BAB3;
-    width: 60%;
-    margin-top: 40px;
-    border-radius: 20px;
+  background-color: #40bab3;
+  width: 60%;
+  margin-top: 40px;
+  border-radius: 20px;
 }
 
 .btn2 {
-    background-color: #40BAB3;
-    width: 60%;
-    margin-top: 40px;
-    border-radius: 20px;
+  background-color: #40bab3;
+  width: 60%;
+  margin-top: 40px;
+  border-radius: 20px;
 }
 
 .joinc {
-    text-align: center;
+  text-align: center;
 }
 
 .hostc {
-    text-align: center;
+  text-align: center;
 }
 
 .btn3 {
-    width: 60%;
-    margin-top: 40px;
-    border-radius: 20px;
-    font-size: 12px;
+  width: 60%;
+  margin-top: 40px;
+  border-radius: 20px;
+  font-size: 12px;
 }
 
 .btnsignin {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .btnlogin {
-    border-radius: 20px;
-    background-color: #F5C508;
-    margin-left: 7%;
-    margin-top: 10%;
-    font-size: 15px;
-    border-color: #F5C508;
+  border-radius: 20px;
+  background-color: #f5c508;
+  margin-left: 7%;
+  margin-top: 10%;
+  font-size: 15px;
+  border-color: #f5c508;
 }
 
 .card3 {
-    background-color: #030E4C;
-    border-radius: 5px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+  background-color: #030e4c;
+  border-radius: 5px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .create {
-    padding: 20px;
-    margin-left: 80px;
-    margin-right: 80px;
-    color: white;
-    align-items: center;
-    text-align: center;
+  padding: 20px;
+  margin-left: 80px;
+  margin-right: 80px;
+  color: white;
+  align-items: center;
+  text-align: center;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
-    background-color: #030E4C;
+input:checked + .slider {
+  background-color: #030e4c;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #030E4C;
+input:focus + .slider {
+  box-shadow: 0 0 1px #030e4c;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:before+.slider:before {
-    background-color: #030E4C;
+input:before + .slider:before {
+  background-color: #030e4c;
 }
 
-input:checked+.slider {
-    background-color: #030E4C;
+input:checked + .slider {
+  background-color: #030e4c;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #030E4C;
+input:focus + .slider {
+  box-shadow: 0 0 1px #030e4c;
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
-
 
 /* Rounded sliders */
 
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }

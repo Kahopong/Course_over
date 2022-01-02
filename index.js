@@ -1,4 +1,4 @@
-const port = 8001;
+const port = 8000;
 
 //require classes
 //================
@@ -43,7 +43,8 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-}));
+  })
+);
 app.use(flash());
 
 app.use(express.static(__dirname + "/public"));
@@ -64,7 +65,6 @@ const hostService = new HostService(knex);
 const infoService = new InfoService(knex);
 const myCourseService = new MyCourseService(knex);
 
-
 app.use("/book", new BookRouter(bookService, express).router());
 app.use("/display", new DisplayRouter(displayService, express).router());
 app.use("/fav", new FavRouter(favService, express).router());
@@ -76,12 +76,12 @@ app.use("/", new ViewRouter(passport, express).router());
 app.get("/", (req, res) => {
   res.render("usershb/index", { layout: "users_main" });
 });
-app.get("/index/course", (req, res)=> {
-  res.render('usershb/courseinfo.handlebars', {layout: 'users_main'})
-})
+app.get("/index/course", (req, res) => {
+  res.render("usershb/courseinfo.handlebars", { layout: "users_main" });
+});
 // Listen to port
 app.listen(port, () => {
-    console.log(`Listening on ${port}`);
+  console.log(`Listening on ${port}`);
 });
 
 module.exports = app;
