@@ -15,7 +15,7 @@ class FavRouter {
     // Fav a course by user
     // ==================================
     post(req, res) {
-        return (this.favService.fav(1, req.params.courseId)
+        return (this.favService.fav(req.session.passport.user.users_id, req.params.courseId)
             .then((data) => {
                 res.json(data)
             })
@@ -28,7 +28,7 @@ class FavRouter {
     //  Unfav a course by user
     // ==================================
     delete(req, res) {
-        return (this.favService.unfav(1, req.params.courseId)
+        return (this.favService.unfav(req.session.passport.user.users_id, req.params.courseId)
             .then((data) => {
                 res.json(data)
             })

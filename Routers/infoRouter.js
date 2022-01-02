@@ -17,10 +17,8 @@ class InfoRouter {
     // GET Users Info
     // ==================================
     getUsers(req, res) {
-        return (this.infoService.listUser(2)
+        return (this.infoService.listUser(req.session.passport.user.users_id)
             .then((data) => {
-                console.log('hello');
-                // console.log(req.session);
                 res.json(data);
             })
             .catch((err) => {
@@ -32,7 +30,7 @@ class InfoRouter {
     // GET Shop Info
     // ==================================
     getShop(req, res) {
-        return (this.infoService.listShop(2)
+        return (this.infoService.listShop(req.session.passport.user.shop_id)
             .then((data) => {
                 res.json(data)
             })
@@ -47,8 +45,8 @@ class InfoRouter {
     // ==================================
     putUsers(req, res) {
         return (this.infoService
-            .editUser(3, req.body.edit)
-            .then(() => this.infoService.listUser(3))
+            .editUser(req.session.passport.user.users_id, req.body.edit)
+            .then(() => this.infoService.listUser(req.session.passport.user.users_id))
             .then((data) => {
                 res.json(data)
             })
@@ -63,8 +61,8 @@ class InfoRouter {
     // ==================================
     putShop(req, res) {
         return (this.infoService
-            .editShop(3, req.body.edit)
-            .then(() => this.infoService.listShop(3))
+            .editShop(req.session.passport.user.shop_id, req.body.edit)
+            .then(() => this.infoService.listShop(req.session.passport.user.shop_id))
             .then((data) => {
                 res.json(data)
             })
