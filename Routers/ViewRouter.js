@@ -93,29 +93,36 @@ class ViewRouter {
 
     //Shop side handlebars (default)
     router.get("/dashboard", (req, res) => {
-      res.render("shophb/dashboard");
+      res.render("shophb/dashboard", { name: "Fanki" });
     });
 
     router.get("/edit_shop_info", (req, res) => {
-      res.render("shophb/edit_shop_info");
+      res.render("shophb/edit_shop_info"), { name: "Fanki" };
     });
 
     router.get("/add_course", (req, res) => {
-      res.render("shophb/add_course");
+      res.render("shophb/add_course"), { name: "Fanki" };
     });
 
     router.get("/edit_course", (req, res) => {
-      res.render("shophb/edit_course");
+      res.render("shophb/edit_course"), { name: "Fanki" };
     });
 
     router.get("/list_booking", (req, res) => {
-      res.render("shophb/list_booking");
+      res.render("shophb/list_booking"), { name: "Fanki" };
     });
 
     //User side handlebars
     // res.render('__FILL_ME_IN__', { layout: 'users_main' })
     router.get("/mycourse", (req, res) => {
-      res.render("usershb/mycourse", { layout: "users_main" });
+      res.render("usershb/mycourse", { name: "Fanki", layout: "users_main" });
+    });
+
+    router.get("/edit_member_info", (req, res) => {
+      res.render("usershb/edit_member_info", {
+        name: "Fanki",
+        layout: "users_main",
+      });
     });
 
     return router;
