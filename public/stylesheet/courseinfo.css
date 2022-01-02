@@ -159,3 +159,13 @@ Right card
   display: flex;
   justify-content: center;
 }
+
+.unbook {
+  background: var(--color5);
+  color: white;
+  border-radius: 25px;
+  width: 300px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+}
