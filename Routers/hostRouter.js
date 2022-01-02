@@ -22,7 +22,7 @@ class HostRouter {
     // ==================================
     get(req, res) {
         return this.hostService
-            .listCourse(1)
+            .listCourse(req.session.passport.user.shop_id)
             .then((data) => {
                 // console.log(req);
                 res.json(data);
@@ -37,9 +37,9 @@ class HostRouter {
     // ==================================
     post(req, res) {
         return this.hostService
-            .addCourse(1, req.body.course)
+            .addCourse(req.session.passport.user.shop_id, req.body.course)
             .then(() => {
-                return this.hostService.listCourse(1);
+                return this.hostService.listCourse(req.session.passport.user.shop_id);
             })
             .then((data) => {
                 res.json(data);
@@ -54,9 +54,9 @@ class HostRouter {
     // ==================================
     put(req, res) {
         return this.hostService
-            .editCourse(req.params.courseId, req.body.course, 1)
+            .editCourse(req.params.courseId, req.body.course, req.session.passport.user.shop_id)
             .then(() => {
-                return this.hostService.listCourse(1);
+                return this.hostService.listCourse(req.session.passport.user.shop_id);
             })
             .then((data) => {
                 res.json(data);
@@ -71,9 +71,9 @@ class HostRouter {
     // ==================================
     delete(req, res) {
         return this.hostService
-            .removeCourse(1, req.params.courseId)
+            .removeCourse(req.session.passport.user.shop_id, req.params.courseId)
             .then(() => {
-                return this.hostService.listCourse(1);
+                return this.hostService.listCourse(req.session.passport.user.shop_id);
             })
             .then((data) => {
                 res.json(data);

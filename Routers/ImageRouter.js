@@ -1,6 +1,6 @@
-class BookRouter {
-    constructor(bookService, express) {
-        this.bookService = bookService;
+class ImageRouter {
+    constructor(imageService, express) {
+        this.imageService = imageService;
         this.express = express
     }
 
@@ -8,15 +8,14 @@ class BookRouter {
         let router = this.express.Router();
         router.post('/users/:courseId', this.post.bind(this))
         router.delete('/users/:courseId', this.delete.bind(this))
-        router.get('/shop/:courseId', this.get.bind(this))
 
         return router;
     }
 
-    // Book a course by user
+    // Fav a course by user
     // ==================================
     post(req, res) {
-        return (this.bookService.book(req.session.passport.user.users_id, req.params.courseId)
+        return (this.imageService.fav(req.session.passport.user.users_id, req.params.courseId)
             .then((data) => {
                 res.json(data)
             })
@@ -26,10 +25,10 @@ class BookRouter {
             }));
     }
 
-    //  Unbook a course by user
+    //  Unfav a course by user
     // ==================================
     delete(req, res) {
-        return (this.bookService.unbook(req.session.passport.user.users_id, req.params.courseId)
+        return (this.imageService.unfav(req.session.passport.user.users_id, req.params.courseId)
             .then((data) => {
                 res.json(data)
             })
@@ -38,19 +37,6 @@ class BookRouter {
                 return res.json(err)
             }));
     }
-
-
-    //  List all users who booked a courses 
-    // ====================================
-    get(req, res) {
-        return (this.bookService.list(req.params.courseId).then((data) => {
-            res.json(data)
-        }).catch((err) => {
-            res.status(500)
-            return res.json(err)
-        }))
-    }
-
 }
 
-module.exports = BookRouter;
+module.exports = ImageRouter;

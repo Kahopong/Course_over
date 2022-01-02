@@ -25,16 +25,15 @@ class DisplayRouter {
             }));
     }
 
-    getcourse(req, res){
+    getcourse(req, res) {
         return (this.displayService.listcourse(req.params.id)
-        .then((data) => {
-            console.log(" i am on displayroute")
-            res.json(data)
-        })
-        .catch((err)=> {
-            res.status(500)
-            return res.json(err)
-        }))
+            .then((data) => {
+                res.json(data)
+            })
+            .catch((err) => {
+                res.status(500)
+                return res.json(err)
+            }))
     }
 
     // Sorting Courses

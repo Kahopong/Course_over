@@ -1,5 +1,4 @@
-const ListAllCourseTemplate =
-  ` {{#each course}}
+const ListAllCourseTemplate = ` {{#each course}}
   <div class='card-container col-lg-4' data-id="{{id}}">
       <div class="card" >
           <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
@@ -14,10 +13,9 @@ const ListAllCourseTemplate =
       </div>
   </div>
   {{/each}}`;
-  const ListAllCourseFunction = Handlebars.compile(ListAllCourseTemplate);
+const ListAllCourseFunction = Handlebars.compile(ListAllCourseTemplate);
 
-  const ListOneCourseTemplate=
-  `  <div class="container">
+const ListOneCourseTemplate = `  <div class="container">
       <div class="row course">
           <div class="col-lg-8 col-sm-12 ">
               <!-- Title + Fav Row -->
@@ -70,6 +68,7 @@ const ListAllCourseTemplate =
                           </tbody>
                       </table>
                       <button type="button" class="booknow btn">BOOK NOW</button>
+                      <button type="button" class="unbook btn">BOOKED</button>                        
                   </div>
               </div>
           </div>
@@ -77,16 +76,15 @@ const ListAllCourseTemplate =
       </div>`
 
 
-const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate)
-
+const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate);
 
 const displayIndexCourses = (data) => {
-    $('#All_course_card').html(ListAllCourseFunction({ course: data }))
-}
+  $("#All_course_card").html(ListAllCourseFunction({ course: data }));
+};
 
 const displayOneCourses = (data) => {
-  $('#Section2').html(ListOneCourseFunction(data))
-}
+  $("#Section2").html(ListOneCourseFunction(data));
+};
 
 const courseParaTemplate = `
 <div class="course_about">
@@ -135,10 +133,10 @@ function edittedTime2(data){
 }
 
 $(() => {
-    axios
-        .get("/display")
-        .then((res) => {
-            // overall info at the top
+  axios
+    .get("/display")
+    .then((res) => {
+      // overall info at the top
 
             //insert data into handlebars
             displayIndexCourses(edittedTime(res.data))
@@ -179,10 +177,15 @@ $(() => {
         });
     console.log('the id is',sessionStorage.getItem("course_id"))
 
+    // window.location.href = '/index/course';
+  
 
-// ================================
+
+
+
+// ================================================================
 //  Get My Course user booked
-// ================================
+// ================================================================
 
 // Hanlebars compile
 const myCourseInfoTemplate = `
@@ -204,7 +207,7 @@ const myCourseInfoFunction = Handlebars.compile(myCourseInfoTemplate);
 
 //Define display courses info in myCourse at the table
 const displayBookedCourses = (data) => {
-    $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
+  $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
 };
 
 $(() => {
@@ -260,7 +263,7 @@ const myFavInfoFunction = Handlebars.compile(myFavInfoTemplate);
 
 //Define display courses info in myCourse at the table
 const displayFavCourses = (data) => {
-    $("#myfav_course_card").html(myFavInfoFunction({ course: data }));
+  $("#myfav_course_card").html(myFavInfoFunction({ course: data }));
 };
 
 // Document on ready function
@@ -300,23 +303,23 @@ $(() => {
 // ================================================================
 // Hanlebars compile
 const editMemberInfoTemplate = `
-<form action="/info/users" method="put" class="edit_member_info">
+<form class="edit_member_info" id="edit_member_info">
   <div class="edit_member_title">Edit My Account</div>
   <div class="container">
       <div class="row">
           <div class="col-lg-6">
               <label for="fname">First Name</label><br>
-              <input type="text" id="fname" name="fname" value="{{firstName}}">
+              <input type="text" id="fname" name="firstName" value="{{firstName}}">
           </div>
           <div class="col-lg-6">
               <label for="sname">Surname</label><br>
-              <input type="text" id="sname" name="sname" value="{{surname}}">
+              <input type="text" id="sname" name="surname" value="{{surname}}">
           </div>
       </div>
       <div class="row">
           <div class="col-lg-6">
               <label for="uname">Username</label><br>
-              <input type="text" id="uname" name="uname" value="{{username}}">
+              <input type="text" id="uname" name="username" value="{{username}}">
           </div>
           <div class="col-lg-6">
               <label for="tel">Tel</label><br>
@@ -335,7 +338,8 @@ const editMemberInfoTemplate = `
           </div>
       </div>
       <div class="row">
-            <input type="submit" class="btn btnSubmit" value="Trial Submit button, still cannot submit">
+            <a href="/dashboard"><input type="submit" class="btn btnSubmit"></a>
+
       </div>
   </div>
 </form>
@@ -355,6 +359,31 @@ $(() => {
     });
 
     $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
+
+    // member info Edit Form submit
+    $("#edit_member_info").submit((e) => {
+      e.preventDefault();
+      console.log("enter to edit user submit");
+      let serializeArray = $("#edit_member_info").serializeArray();
+      // let generalInfo = serializeArray.slice(0, 8);
+      // let paraInfo = serializeArray.slice(8);
+      let editUser = serializeArray.reduce((obj, input) => {
+        obj[input.name] = input.value;
+        return obj;
+      }, {});
+      console.log(`edit user`, editUser);
+
+      axios
+        .put(`/info/users/`, {
+          edit: editUser,
+        })
+        .then((res) => {
+          $("#success_editUser_msg").html(
+            `Your account '${editUser.username}' has been edited `
+          );
+        });
+      window.location = "/";
+    });
   });
 });
 
@@ -365,3 +394,7 @@ $(() => {
 // $(() => {
 //   axios.post("/fav/users").then((res) => {});
 // });
+
+// ================================================================
+//  book/ unbook a course on courseDetail n my course
+// ================================================================
