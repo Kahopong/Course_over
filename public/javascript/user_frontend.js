@@ -132,16 +132,6 @@ $(() => {
             displayIndexCourses(edittedTime(res.data))
                 // console.log(res.data);
         })
-
-        // .catch((err) => console.log(err));
-
-
-
-
-
-    
-    
- 
       .catch((err) => console.log(err));
     
       $("#All_course_card").on("click",'.card .course-title', (event) => {
