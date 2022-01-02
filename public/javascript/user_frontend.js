@@ -1,7 +1,3 @@
-/* <a href="/index/course"></a> */
-
-// const res = require("express/lib/response");
-
 const ListAllCourseTemplate =
   ` {{#each course}}
   <div class='card-container col-lg-4' data-id="{{id}}">
@@ -21,11 +17,7 @@ const ListAllCourseTemplate =
   const ListAllCourseFunction = Handlebars.compile(ListAllCourseTemplate);
 
   const ListOneCourseTemplate=
-  `
-  
-
-
-  <div class="container">
+  `  <div class="container">
       <div class="row course">
           <div class="col-lg-8 col-sm-12 ">
               <!-- Title + Fav Row -->
@@ -82,15 +74,13 @@ const ListAllCourseTemplate =
               </div>
           </div>
 
-      </div>
-
-`
+      </div>`
 
 
 const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate)
 
 
-  const displayIndexCourses = (data) => {
+const displayIndexCourses = (data) => {
     $('#All_course_card').html(ListAllCourseFunction({ course: data }))
 }
 
@@ -187,26 +177,9 @@ $(() => {
         })
           .catch((err) => console.log(err));
         });
- 
-   
-    //   $('#All_course_card').on('click', '.card-title', (event) => {
-    //       console.log('hi')
-    //     let course_id = $(event.currentTarget).closest('.card-body').data('id')
-    //     console.log(course_id)
-    //     sessionStorage.setItem('course_id', course_id)
-    // })
-    // console.log(sessionStorage.getItem("course_id"))
-    // window.location.href = '/signup';
     console.log('the id is',sessionStorage.getItem("course_id"))
-  //   axios.
-  //   get(`/display/${sessionStorage.getItem("course_id")}`)
-  //   .then((res) => {
-  //       displayOneCourses(res.data);
-  //       console.log("i am here")
-  //       console.log(res.data);
-  //   })
-  //     .catch((err) => console.log(err));
-  // });
+
+
 // ================================
 //  Get My Course user booked
 // ================================
@@ -234,9 +207,34 @@ const displayBookedCourses = (data) => {
     $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
 };
 
-// ================================
-//  Get My Fav
-// ================================
+$(() => {
+  axios
+    .get("/mycourse/users/book")
+    .then((res) => {
+      // overall info at the top
+      res.data = res.data.map((x) => {
+        x.date = x.date.split("T")[0];
+        x.timeStart = x.timeStart.slice(0, -3);
+        x.timeEnd = x.timeEnd.slice(0, -3);
+        return x;
+      });
+      //insert data into handlebars
+      displayBookedCourses(res.data);
+      console.log("Get course booked in My Course", res.data);
+    })
+    .catch((err) => console.log(err));
+
+  $("#mycourse_info_card").on("click", ".card-title", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container ")
+      .data("id");
+    sessionStorage.setItem("course_id", course_id);
+  });
+});
+
+// ================================================================
+//  Get course fav in My Course
+// ================================================================
 // Hanlebars compile
 const myFavInfoTemplate = `
 {{#each course}}
@@ -267,54 +265,103 @@ const displayFavCourses = (data) => {
 
 // Document on ready function
 $(() => {
-    axios
-        .get("/mycourse/users/book")
-        .then((res) => {
-            // overall info at the top
-            // console.log(`in axios books`);
-            res.data = res.data.map((x) => {
-                x.date = x.date.split("T")[0];
-                x.timeStart = x.timeStart.slice(0, -3);
-                x.timeEnd = x.timeEnd.slice(0, -3);
-                return x;
-            });
-            //insert data into handlebars
-            displayBookedCourses(res.data);
-            // console.log("res data", res.data);
-        })
-        .catch((err) => console.log(err));
+  axios
+    .get("/mycourse/users/fav")
+    .then((res) => {
+      // overall info at the top
+      res.data = res.data.map((x) => {
+        // date format "yyyyy-mm-dd"
+        x.date = x.date.split("T")[0];
+        // duration
+        x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
+        x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
+        let min =
+          (x.timeEnd[0] - x.timeStart[0]) * 60 +
+          (x.timeEnd[1] - x.timeStart[1]);
+        let hour = min / 60;
+        x.duration = hour;
+        return x;
+      });
+      displayFavCourses(res.data);
+      console.log("Get course fav in My Course", res.data);
+    })
+    .catch((err) => console.log(err));
 
-    axios.get("/mycourse/users/fav").then((res) => {
-        // overall info at the top
-        // console.log(`in axios`);
-        res.data = res.data.map((x) => {
-            // date format "yyyyy-mm-dd"
-            x.date = x.date.split("T")[0];
-            // duration
-            x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
-            x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
-            let min =
-                (x.timeEnd[0] - x.timeStart[0]) * 60 + (x.timeEnd[1] - x.timeStart[1]);
-            let hour = min / 60;
-            x.duration = hour;
-            return x;
-        });
-        displayFavCourses(res.data);
-
-        $("#mycourse_info_card").on("click", ".card-title", (event) => {
-            let course_id = $(event.currentTarget)
-                .closest(".card-container ")
-                .data("id");
-            sessionStorage.setItem("course_id", course_id);
-        });
-
-        $("#myfav_course_card")
-            .on("click", ".card-title", (event) => {
-                let course_id = $(event.currentTarget)
-                    .closest(".card-container ")
-                    .data("id");
-                sessionStorage.setItem("course_id", course_id);
-            })
-            // .catch((err) => console.log(err));
-    });
+  $("#myfav_course_card").on("click", ".card-title", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container ")
+      .data("id");
+    sessionStorage.setItem("course_id", course_id);
+  });
 });
+
+// ================================================================
+//  Edit member info in my account
+// ================================================================
+// Hanlebars compile
+const editMemberInfoTemplate = `
+<form action="/info/users" method="put" class="edit_member_info">
+  <div class="edit_member_title">Edit My Account</div>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+              <label for="fname">First Name</label><br>
+              <input type="text" id="fname" name="fname" value="{{firstName}}">
+          </div>
+          <div class="col-lg-6">
+              <label for="sname">Surname</label><br>
+              <input type="text" id="sname" name="sname" value="{{surname}}">
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-6">
+              <label for="uname">Username</label><br>
+              <input type="text" id="uname" name="uname" value="{{username}}">
+          </div>
+          <div class="col-lg-6">
+              <label for="tel">Tel</label><br>
+              <input type="tel" id="tel" name="tel" value="{{tel}}">
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-6">
+              <label for="dob">Date of Birth</label><br>
+              <input type="date" id="dob" name="dob" value="{{dob}}">
+          </div>
+          <div class="col-lg-6">
+              <label for="sex">Sex</label><br>
+              <input type="radio" value="male" id="sexb" class="sex" name="sex" checked>Male
+              <input type="radio" value="female" id="sexg" class="sex" name="sex">Female
+          </div>
+      </div>
+      <div class="row">
+            <input type="submit" class="btn btnSubmit" value="Trial Submit button, still cannot submit">
+      </div>
+  </div>
+</form>
+
+
+`;
+
+const editMemberInfoFunction = Handlebars.compile(editMemberInfoTemplate);
+
+// Document on ready function
+$(() => {
+  axios.get("/info/users").then((res) => {
+    res.data = res.data.map((x) => {
+      // date format "yyyyy-mm-dd"
+      x.dob = x.dob.split("T")[0];
+      return x;
+    });
+
+    $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
+  });
+});
+
+// ================================================================
+//  Fav/ unFav a course on courseDetail n my course
+// ================================================================
+
+// $(() => {
+//   axios.post("/fav/users").then((res) => {});
+// });

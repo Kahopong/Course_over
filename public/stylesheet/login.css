@@ -1,133 +1,97 @@
-/*navbar*/
-
-.navi {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #40BAB3;
-}
-
-.navi1 {
-    padding-left: 100px;
-}
-
-.navi2 {
-    padding-right: 100px;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    padding: 8px;
-    color: white;
-    text-decoration: none;
-}
-
-li a:hover {
-    color: white;
-}
-
-
 /*login*/
 :root {
-    --color1: #40bab3;
-    --color2: #030e4c;
-    --color3: #ffd335;
-    --color4: #cd0000;
-    --color5: #297373;
-  }
-  
+  --color1: #40bab3;
+  --color2: #030e4c;
+  --color3: #ffd335;
+  --color4: #cd0000;
+  --color5: #297373;
+}
 
 .login_card {
-    border-color: white;
-    font-size: 20px;
-    margin: 100px 100px 50px 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  border-color: white;
+  font-size: 20px;
+  margin: 100px 100px 50px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .card2 {
-    border: 2px solid var(--color1);
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+  border: 2px solid var(--color1);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .signin {
-    background-color: var(--color1);
-    padding: 20px;
-    color: white;
-    align-items: center;
-    text-align: center;
-    border-top-left-radius: 27px;
+  background-color: var(--color1);
+  padding: 20px;
+  color: white;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 27px;
 }
 
 .card2 #Uname {
-    margin-left: 70px;
-    margin-right: 70px;
-    margin-top: 50px;
-    background-color: #DFDFDF;
-    border-radius: 30px;
-    padding-left: 20px;
-    padding-right: 3%;
-    font-size: 16px;
-   height: 38px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 50px;
+  background-color: #dfdfdf;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 3%;
+  font-size: 16px;
+  height: 38px;
 }
 
 .card2 #Pword {
-    margin-left: 70px;
-    margin-right: 70px;
-    margin-top: 30px;
-    background-color: #DFDFDF;
-    border-radius: 30px;
-    font-size: 16px;
-    padding-left: 20px;
-    /* padding-right: 60px; */
-    padding-right: 3%;
-    height: 38px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 30px;
+  background-color: #dfdfdf;
+  border-radius: 30px;
+  font-size: 16px;
+  padding-left: 20px;
+  /* padding-right: 60px; */
+  padding-right: 3%;
+  height: 38px;
 }
 
 .forgotp {
-    font-size: 12px;
-    padding-left: 120px;
+  font-size: 12px;
+  padding-left: 120px;
 }
 
 .card1_2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 12px;
-    margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 12px;
+  margin-top: 40px;
 }
 
 .joinc .btn1 {
-    background-color: var(--color1);
-    width: 60%;
-    margin-top: 50px;
-    border-radius: 20px;
+  background-color: var(--color1);
+  width: 60%;
+  margin-top: 50px;
+  border-radius: 20px;
 }
 
 .hostc .btn2 {
-    background-color: var(--color1);
-    width: 60%;
-    margin-top: 30px;
-    border-radius: 20px;
+  background-color: var(--color1);
+  width: 60%;
+  margin-top: 30px;
+  border-radius: 20px;
 }
 
 .joinc {
-    text-align: center;
+  text-align: center;
 }
 
 .hostc {
-    text-align: center;
+  text-align: center;
 }
-
 
 /* 
 .card2 .btnsignin {
@@ -135,16 +99,16 @@ li a:hover {
     margin-bottom: 40px;
 } */
 
-.btnsignin .btn3{
-    /* text-align: center; */
-    align-items: center;
-    width: 40%;
-    margin-top: 40px;
-    margin-left: 32%;
-    margin-bottom: 40px;
-    border-radius: 20px;
-    font-size: 12px;
-    background-color: var(--color3);
+.btnsignin .btn3 {
+  /* text-align: center; */
+  align-items: center;
+  width: 40%;
+  margin-top: 40px;
+  margin-left: 32%;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  font-size: 12px;
+  background-color: var(--color3);
 }
 /* .btnsignin .btnlogin {
     border-radius: 20px;
@@ -156,132 +120,131 @@ li a:hover {
 } */
 
 .card3 {
-    background-color: var(--color2);
-    /* border-radius: 5px; */
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+  background-color: var(--color2);
+  /* border-radius: 5px; */
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .create {
-    padding: 20px;
-    margin-left: 80px;
-    margin-right: 80px;
-    color: white;
-    align-items: center;
-    text-align: center;
+  padding: 20px;
+  margin-left: 80px;
+  margin-right: 80px;
+  color: white;
+  align-items: center;
+  text-align: center;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
-    background-color: #030E4C;
+input:checked + .slider {
+  background-color: #030e4c;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #030E4C;
+input:focus + .slider {
+  box-shadow: 0 0 1px #030e4c;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:before+.slider:before {
-    background-color: #030E4C;
+input:before + .slider:before {
+  background-color: #030e4c;
 }
 
-input:checked+.slider {
-    background-color: #030E4C;
+input:checked + .slider {
+  background-color: #030e4c;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #030E4C;
+input:focus + .slider {
+  box-shadow: 0 0 1px #030e4c;
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
-
 
 /* Rounded sliders */
 
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }

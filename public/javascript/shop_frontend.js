@@ -5,13 +5,21 @@ Handlebars.registerHelper("inc", function(value, options) {
 
 // Hanlebars compile
 const shopInfoTemplate = `
-    <label> Company: </label>
-    <input value="{{company}}"><br>
-    <label> Email: </label>
-    <input value="{{email}}"><br>
-    <label> Tel: </label>
-    <input value="{{tel}}"><br>
-    <input type="submit" value="Trial Submit button, still cannot submit"><br> 
+  <div class="row1">
+    <label for="CompanyN">Company Name</label><br>
+    <input type="text" id="CompanyN" name="CompanyN" value="{{company}}">
+  </div>
+
+  <div class="row2">
+      <label for="username">Email</label><br>
+      <input type="email" id="email2" name="username" value="{{email}}">
+  </div>
+
+  <div class="row3">
+      <label for="Tel2">Tel</label><br>
+      <input type="tel" id="Tel2" name="Tel2" value="{{tel}}">
+  </div>
+  <input type="submit" class="btn btnSubmit" value="Trial Submit button, still cannot submit"><br> 
 `;
 const shopInfoFunction = Handlebars.compile(shopInfoTemplate);
 

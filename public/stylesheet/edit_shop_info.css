@@ -1,0 +1,65 @@
+:root {
+  --color1: #40bab3;
+  --color2: #030e4c;
+  --color3: #ffd335;
+  --color4: #cd0000;
+  --color5: #297373;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  color: var(--color2);
+}
+
+.form2 {
+  width: 50vw;
+  margin: 50px auto 70px auto;
+  border: 2px solid #40bab3;
+  border-radius: 30px;
+  box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.25);
+}
+
+.edit_shop_title {
+  background-color: #40bab3;
+  padding: 20px;
+  color: white;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 27px;
+  border-top-right-radius: 27px;
+}
+
+#edit_shop_form div:first-child {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#edit_shop_form div {
+  margin-bottom: 30px;
+  margin-left: 20%;
+}
+
+#edit_shop_form .companyName {
+  margin: 0 auto;
+}
+
+#edit_shop_form #email2,
+#edit_shop_form #password2,
+#edit_shop_form #CompanyN,
+#edit_shop_form #Tel2 {
+  border-radius: 30px;
+  background-color: #dfdfdf;
+  border-color: #dfdfdf;
+  width: 70%;
+}
+
+#edit_shop_form .btnSubmit {
+  width: 20%;
+  border-radius: 30px;
+  margin: 30px 0 60px 0;
+  background-color: var(--color3);
+  margin-left: 40%;
+}
