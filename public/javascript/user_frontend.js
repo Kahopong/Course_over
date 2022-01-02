@@ -1,5 +1,7 @@
 /* <a href="/index/course"></a> */
 
+// const res = require("express/lib/response");
+
 const ListAllCourseTemplate =
   ` {{#each course}}
   <div class='card-container col-lg-4' data-id="{{id}}">
@@ -43,20 +45,8 @@ const ListAllCourseTemplate =
                       </div>
                   </div>
               </div>
-              <div class="course_about">
-                  <div class="row">
-                      <div class="col-lg-12">
-                          <p class="course_about_text">{{about}}</p>
-                      </div>
-                  </div>
-              </div>
-              <div class="course_specialnote">
-                  <div class="row">
-                      <div class="col-lg-6 course_specialnote_title">
-                          <i class="fas fa-comment courseinfo_i"></i>
-                          <span>Special Notes</span>
-                      </div>
-                  </div>
+              <div class="course_para">
+                    
               </div>
 
               <div>
@@ -79,7 +69,7 @@ const ListAllCourseTemplate =
                           </tr>
                           <tr>
                               <td class="icon_col"><i class="fas fa-clock courseinfo_i"></i></td>
-                              <td class="info_col">{{timeEnd}} - {{timeStart}}</td>
+                              <td class="info_col">{{timeStart}} - {{timeEnd}}</td>
                           </tr>
                           <tr>
                               <td class="icon_col"><i class="fas fa-tag courseinfo_i"></i></td>
@@ -96,6 +86,7 @@ const ListAllCourseTemplate =
 
 `
 
+
 const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate)
 
 
@@ -106,6 +97,27 @@ const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate)
 const displayOneCourses = (data) => {
   $('#Section2').html(ListOneCourseFunction(data))
 }
+
+const courseParaTemplate = `
+<div class="course_about">
+  <div class="row">
+    <div class="col-lg-12">
+        <p class="course_about_text">{{about}}</p>
+    </div>
+  </div>
+</div>
+                    
+<div class="course_specialnote">
+  <div class="row">
+    <div class="col-lg-6 course_specialnote_title">
+      <i class="fas fa-comment courseinfo_i"></i>
+        <span>Special Notes</span>
+        </div>
+        <p>{{specialNote}}</p>
+    </div>
+</div>`
+
+const courseParaFunction = Handlebars.compile(courseParaTemplate)
 
 const edittedTime = (res_data) => {
     return res_data.map((x) => {
@@ -121,6 +133,16 @@ const edittedTime = (res_data) => {
     });
 }
 
+function edittedTime2(data){
+      data.price= data.price.split(".")[0];
+      data.date = data.date.split("T")[0];
+      data.timeStart= data.timeStart.slice(-8,-3)
+      data.timeEnd= data.timeEnd.slice(-8,-3)
+      console.log("hi", data)
+      return data;
+
+  
+}
 
 $(() => {
     axios
@@ -141,13 +163,27 @@ $(() => {
         
           // window.location.href = '/index/course';
       }); 
+      $("#section1").on("click",'.nostyle', (event) => {
+        let course_id = $(event.currentTarget).closest(".card-container").data("id");
+        console.log('courseid', course_id)
+      sessionStorage.setItem("course_id", course_id);
+      
+        // window.location.href = '/index/course';
+    }); 
       axios.
         get(`/display/${sessionStorage.getItem("course_id")}`)
         .then((res) => {
-          // $('#Section2').html('hello')
-            displayOneCourses(res.data[0]);
-            console.log("i am here")
-            console.log(res.data);
+            displayOneCourses(edittedTime2(res.data[0]));
+           
+            console.log(res.data[0]);
+        })
+          .catch((err) => console.log(err));
+   //get one course para
+        axios.
+        get(`/host/course_para/${sessionStorage.getItem("course_id")}`)
+        .then((res) => {
+            // displayOneCourses(res.data[0]);
+            $('.course_para').html(courseParaFunction(res.data[0]))      
         })
           .catch((err) => console.log(err));
         });
@@ -179,7 +215,7 @@ $(() => {
 const myCourseInfoTemplate = `
 {{#each course}}
     <div class='card-container col-lg-4 data-id="{{id}}"'>
-        <a href='/display' class='nostyle'>
+        <a href='/index/course' class='nostyle'>
             <div class="card">
                 <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
                 <div class="card-body">
