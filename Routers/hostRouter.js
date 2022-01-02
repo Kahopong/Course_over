@@ -19,7 +19,7 @@ class HostRouter {
   // ==================================
   get(req, res) {
     return this.hostService
-      .listCourse(req.session.passport.user.id)
+      .listCourse(2)
       .then((data) => {
         // console.log(req);
         res.json(data);

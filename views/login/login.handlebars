@@ -10,11 +10,11 @@
                 <input type="text" id="Uname" name="username" placeholder="username"><br>
                 <input type="password" id="Pword" name="password" placeholder="password">
           
-             <div class="forgotp">
+             {{!-- <div class="forgotp">
    
                  <div>Forgot  <a href="url">Username/Password?</a></div>
                
-             </div>
+             </div> --}}
              <div class="card1_2">
                  <div>Member</div>
                 <label class="switch">
@@ -26,8 +26,9 @@
 
            
             <div class="btnsignin">
-             {{!-- <button type="button" class="btn btn-warning btn3" >SIGN IN</button> --}}
-              <input type="submit"  value="Sign up" class="btnlogin"/>
+             <button type="submit" class="btn btn-warning btn3">SIGN IN</button>
+              {{!-- <input type="submit"  value="Sign up" class="btn-warning btnlogin"/> --}}
+              
                
             </div>
                </form>
@@ -43,7 +44,7 @@
         </div>
     
     </div>
-    <h3>testing</h3>
+   
                       {{#if error}}
     <h3>{{error}}</h3>
     {{/if}}

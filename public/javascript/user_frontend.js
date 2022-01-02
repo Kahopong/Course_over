@@ -1,23 +1,110 @@
-const ListAllshopTemplate =
+/* <a href="/index/course"></a> */
+
+const ListAllCourseTemplate =
   ` {{#each course}}
-  <div class='card-container col-lg-4'>
-      <div class="card">
+  <div class='card-container col-lg-4' data-id="{{id}}">
+      <div class="card" >
           <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
-          <div class="card-body">
-              <h5 class="card-title"><a href="/index/course">{{title}}</a></h5>
+          <div class="card-body" >
+          <a href="/index/course" class="course-title"> <h5 class="card-title">{{title}}</h5></a>
               <h6 class="card-subtitle mb-2 text-muted">{{category}}</h6>
               <div>
-                  <span class="card-text float-left"><i class="far fa-clock"></i>&nbsp;&nbsp;{{duration}}</span>
-                  <span class="card-text float-right"> {{price}}</span>
+                  <span class="card-text float-left"><i class="far fa-clock"></i>&nbsp;&nbsp;{{duration}} Hours</span>
+                  <span class="card-text float-right"> HKD{{price}}</span>
               </div>
           </div>
       </div>
   </div>
-  {{/each}}`
-  const ListAllShopFunction = Handlebars.compile(ListAllshopTemplate)
+  {{/each}}`;
+  const ListAllCourseFunction = Handlebars.compile(ListAllCourseTemplate);
 
-  const displayCourses = (data) => {
-    $('#All_course_card').html(ListAllShopFunction({ course: data }))
+  const ListOneCourseTemplate=
+  `
+  
+
+
+  <div class="container">
+      <div class="row course">
+          <div class="col-lg-8 col-sm-12 ">
+              <!-- Title + Fav Row -->
+              <div class="row course_head">
+                  <div class="title col-lg-11"><h4 class="courseinfo_h4">{{title}}</h4></div>
+                  <div class="fav_icon col-lg-1"><i class="far fa-heart"></i></div>
+              </div>
+              <div class="course_feature">
+                  <div class="row">
+                      <div class="col-lg-6 ">
+                          <i class="fas fa-users courseinfo_i"></i>
+                          <span>Age Range: {{ageRange}}</span>
+                      </div>
+                      <div class="col-lg-6 ">
+                          <i class="fas fa-chart-pie courseinfo_i"></i>
+                          <span>Quota: {{quota}}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="course_about">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <p class="course_about_text">{{about}}</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="course_specialnote">
+                  <div class="row">
+                      <div class="col-lg-6 course_specialnote_title">
+                          <i class="fas fa-comment courseinfo_i"></i>
+                          <span>Special Notes</span>
+                      </div>
+                  </div>
+              </div>
+
+              <div>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <p class="course_specialnote_text">{{specialNote}}</p>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+          <div class="col-lg-4 col-sm-12 courseInfo">
+              <div class="courseInfo_container">
+                  <div class="courseInfo_title">Course Details</div>
+                      <table class="courseInfo_content">
+                          <tbody>
+                          <tr>
+                              <td class="icon_col"><i class="fas fa-calendar courseinfo_i"></i></td>
+                              <td class="info_col">{{date}}</td>
+                          </tr>
+                          <tr>
+                              <td class="icon_col"><i class="fas fa-clock courseinfo_i"></i></td>
+                              <td class="info_col">{{timeEnd}} - {{timeStart}}</td>
+                          </tr>
+                          <tr>
+                              <td class="icon_col"><i class="fas fa-tag courseinfo_i"></i></td>
+                              <td class="info_col">HKD{{price}}</td>
+                          </tr>
+                          </tbody>
+                      </table>
+                      <button type="button" class="booknow btn">BOOK NOW</button>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+`
+
+const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate)
+
+
+  const displayIndexCourses = (data) => {
+    $('#All_course_card').html(ListAllCourseFunction({ course: data }))
+}
+
+const displayOneCourses = (data) => {
+  $('#Section2').html(ListOneCourseFunction(data))
 }
 
 $(() => {
@@ -39,15 +126,48 @@ $(() => {
         return x;
       });
         //insert data into handlebars
-        displayCourses(res.data);
-        console.log(res.data);
+        displayIndexCourses(res.data);
+        console.log("What the F", res.data);
       })
-      $('.card-body').on('click', '.card_title', (event) => {
-        let course_id = $(event.currentTarget).closest('.table_row').data('id')
-        sessionStorage.setItem('course_id', course_id)
-    })
       .catch((err) => console.log(err));
-  });
+    });
+      $("#All_course_card").on("click",'.card .course-title', (event) => {
+          let course_id = $(event.currentTarget).closest(".card-container").data("id");
+          console.log('courseid', course_id)
+        sessionStorage.setItem("course_id", course_id);
+        
+          // window.location.href = '/index/course';
+      }); 
+      axios.
+        get(`/display/${sessionStorage.getItem("course_id")}`)
+        .then((res) => {
+          // $('#Section2').html('hello')
+            displayOneCourses(res.data[0]);
+            console.log("i am here")
+            console.log(res.data);
+        })
+          .catch((err) => console.log(err));
+
+ 
+   
+    //   $('#All_course_card').on('click', '.card-title', (event) => {
+    //       console.log('hi')
+    //     let course_id = $(event.currentTarget).closest('.card-body').data('id')
+    //     console.log(course_id)
+    //     sessionStorage.setItem('course_id', course_id)
+    // })
+    // console.log(sessionStorage.getItem("course_id"))
+    // window.location.href = '/signup';
+    console.log('the id is',sessionStorage.getItem("course_id"))
+  //   axios.
+  //   get(`/display/${sessionStorage.getItem("course_id")}`)
+  //   .then((res) => {
+  //       displayOneCourses(res.data);
+  //       console.log("i am here")
+  //       console.log(res.data);
+  //   })
+  //     .catch((err) => console.log(err));
+  // });
 // ================================
 //  Get My Course user booked
 // ================================

@@ -20,6 +20,7 @@ class DisplayService {
             if (info.length==0) {
                 throw new Error('No Courses to display')
             } else {
+                console.log("i am listcourse" ,id)
                 return info
             }
         })
