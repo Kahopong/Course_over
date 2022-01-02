@@ -14,7 +14,7 @@ class ViewRouter {
 
     router.get("/login", (req, res) => {
       res.render("login/login", {
-        message: req.flash("success"),
+        error: req.flash("error"),
         layout: "login_main",
       });
     });
@@ -81,6 +81,7 @@ class ViewRouter {
         successRedirect: "/index",
         failureRedirect: "/login",
         failureFlash: true,
+       
       })
     );
 

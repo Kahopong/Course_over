@@ -30,7 +30,7 @@ function localLogin() {
               return done(null, shop);
             } else {
               return done(null, false, {
-                message: "Incorrect credentials321.",
+                message: "The password is wrong!",
               });
             }
             // let result = await hashFunctions.checkPassword(password, user.password)
@@ -56,7 +56,7 @@ function localLogin() {
             if (user.password === password) {
               return done(null, user);
             } else {
-              return done(null, false, { message: "Incorrect credentials31." });
+              return done(null, false, { message: "The password is wrong!" });
             }
             // let result = await hashFunctions.checkPassword(password, user.password)
             // if (result) {

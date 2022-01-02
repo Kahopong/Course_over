@@ -1,14 +1,23 @@
+:root {
+    --color1: #40bab3;
+    --color2: #030e4c;
+    --color3: #ffd335;
+    --color4: #cd0000;
+    --color5: #297373;
+  }
 .dbox{
     display: flex;
     flex-direction: column;
-}
+} 
 .form1{
     margin:100px;
-    border: 2px solid #40BAB3;
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 2px solid var(--color1);
     border-radius: 30px;;
 }
 .beour{
-    background-color: #40BAB3;
+    background-color: var(--color1);
     padding: 20px;
     color: white;
     align-items: center;
@@ -16,21 +25,40 @@
     border-top-left-radius: 27px;
     border-top-right-radius: 27px;
 }
-
-.d1,.d2,.d3{
+.d1{
+    margin-top: 50px;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+/* .d1,.d2,.d3{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 .d4{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 360px;
+    display: flex; */
+    /* flex-direction: row; */
+    /* align-items: center; */
+    /* padding-left: 360px; */
+    /* justify-content: space-evenly; */
+    
+/* } */
+#sexg, #sexb{
+    margin-left: 10px;
+    margin-right: 10px;
 }
-.d4_2{
-    padding-left: 410px;
-}
+/* .dobb{
+    margin-left: 20.2%;
+    margin-right: 24%;
+} */
+/* .d4_2{
+    padding-left: 410px; */
+    /* margin-right: 6%;
+    
+} */
 
 #email,#password,#fname,#sname,#uname,#tel{
     border-radius: 30px;
@@ -38,11 +66,12 @@
     border-color:#DFDFDF ;
     width: 200px;
 }
-.btn-warning{
+.form1 .btn-warning{
   margin-left: 40%;
   width: 20%;
   border-radius: 30px;
   margin-top: 80px;
   margin-bottom: 60px;;
+  background-color: var(--color3);
 
 }

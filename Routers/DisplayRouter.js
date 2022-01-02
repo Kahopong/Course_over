@@ -26,8 +26,9 @@ class DisplayRouter {
     }
 
     getcourse(req, res){
-        return (this.displayService.listcourse(req.param.id)
+        return (this.displayService.listcourse(req.params.id)
         .then((data) => {
+            console.log(" i am on displayroute")
             res.json(data)
         })
         .catch((err)=> {

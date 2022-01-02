@@ -33,6 +33,14 @@ li a:hover {
 
 
 /*login*/
+:root {
+    --color1: #40bab3;
+    --color2: #030e4c;
+    --color3: #ffd335;
+    --color4: #cd0000;
+    --color5: #297373;
+  }
+  
 
 .login_card {
     border-color: white;
@@ -44,13 +52,13 @@ li a:hover {
 }
 
 .card2 {
-    border: 2px solid #40BAB3;
+    border: 2px solid var(--color1);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
 }
 
 .signin {
-    background-color: #40BAB3;
+    background-color: var(--color1);
     padding: 20px;
     color: white;
     align-items: center;
@@ -58,26 +66,29 @@ li a:hover {
     border-top-left-radius: 27px;
 }
 
-#Uname {
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 60px;
+.card2 #Uname {
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 50px;
     background-color: #DFDFDF;
     border-radius: 30px;
     padding-left: 20px;
-    padding-right: 60px;
-    font-size: 12px;
+    padding-right: 3%;
+    font-size: 16px;
+   height: 38px;
 }
 
-#Pword {
-    margin-left: 60px;
-    margin-right: 60px;
+.card2 #Pword {
+    margin-left: 70px;
+    margin-right: 70px;
     margin-top: 30px;
     background-color: #DFDFDF;
     border-radius: 30px;
-    font-size: 12px;
+    font-size: 16px;
     padding-left: 20px;
-    padding-right: 60px;
+    /* padding-right: 60px; */
+    padding-right: 3%;
+    height: 38px;
 }
 
 .forgotp {
@@ -95,17 +106,17 @@ li a:hover {
     margin-top: 40px;
 }
 
-.btn1 {
-    background-color: #40BAB3;
+.joinc .btn1 {
+    background-color: var(--color1);
     width: 60%;
-    margin-top: 40px;
+    margin-top: 50px;
     border-radius: 20px;
 }
 
-.btn2 {
-    background-color: #40BAB3;
+.hostc .btn2 {
+    background-color: var(--color1);
     width: 60%;
-    margin-top: 40px;
+    margin-top: 30px;
     border-radius: 20px;
 }
 
@@ -117,30 +128,36 @@ li a:hover {
     text-align: center;
 }
 
-.btn3 {
-    width: 60%;
-    margin-top: 40px;
-    border-radius: 20px;
-    font-size: 12px;
-}
 
-.btnsignin {
+/* 
+.card2 .btnsignin {
     text-align: center;
     margin-bottom: 40px;
-}
+} */
 
-.btnlogin {
+.btnsignin .btn3{
+    /* text-align: center; */
+    align-items: center;
+    width: 40%;
+    margin-top: 40px;
+    margin-left: 32%;
+    margin-bottom: 40px;
     border-radius: 20px;
-    background-color: #F5C508;
+    font-size: 12px;
+    background-color: var(--color3);
+}
+/* .btnsignin .btnlogin {
+    border-radius: 20px;
+    background-color: var(--color3);
     margin-left: 7%;
     margin-top: 10%;
     font-size: 15px;
-    border-color: #F5C508;
-}
+    border-color: var(--color3);
+} */
 
 .card3 {
-    background-color: #030E4C;
-    border-radius: 5px;
+    background-color: var(--color2);
+    /* border-radius: 5px; */
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
