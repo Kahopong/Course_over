@@ -1,16 +1,22 @@
 const ListAllCourseTemplate = ` {{#each course}}
   <div class='card-container col-lg-4' data-id="{{id}}">
+  <a href="/index/course" class="course-title"> 
       <div class="card" >
           <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
           <div class="card-body" >
-          <a href="/index/course" class="course-title"> <h5 class="card-title">{{title}}</h5></a>
+          <div class='d-flex justify-content-between'>
+                    <span class="card-text"><h5 class="card-title">{{title}}</h5></span>
+                 
+                </div>
               <h6 class="card-subtitle mb-2 text-muted">{{category}}</h6>
+              <h6><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;{{date}}</h6>
               <div>
                   <span class="card-text float-left"><i class="far fa-clock"></i>&nbsp;&nbsp;{{duration}} Hours</span>
                   <span class="card-text float-right"> HKD{{price}}</span>
               </div>
           </div>
       </div>
+      </a>  
   </div>
   {{/each}}`;
 const ListAllCourseFunction = Handlebars.compile(ListAllCourseTemplate);
@@ -151,7 +157,7 @@ $(() => {
         
           // window.location.href = '/index/course';
       }); 
-      $("#section1").on("click",'.nostyle', (event) => {
+      $("#section1").on("click",'.card-container .nostyle', (event) => {
         let course_id = $(event.currentTarget).closest(".card-container").data("id");
         console.log('courseid', course_id)
       sessionStorage.setItem("course_id", course_id);
@@ -190,7 +196,7 @@ $(() => {
 // Hanlebars compile
 const myCourseInfoTemplate = `
 {{#each course}}
-    <div class='card-container col-lg-4 data-id="{{id}}"'>
+    <div class='card-container col-lg-4' data-id="{{id}}">
         <a href='/index/course' class='nostyle'>
             <div class="card">
                 <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
@@ -241,7 +247,8 @@ $(() => {
 // Hanlebars compile
 const myFavInfoTemplate = `
 {{#each course}}
-    <div class='card-container col-lg-4 data-id="{{id}}"'>
+    <div class='card-container col-lg-4' data-id="{{id}}">
+    <a href='/index/course' class='nostyle'>
         <div class="card">
             <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
             <div class="card-body">
@@ -257,6 +264,7 @@ const myFavInfoTemplate = `
                 </div>
             </div>
         </div>
+        </a>   
     </div>
 {{/each}}`;
 const myFavInfoFunction = Handlebars.compile(myFavInfoTemplate);
