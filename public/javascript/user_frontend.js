@@ -1,5 +1,5 @@
 const ListAllshopTemplate =
-  ` {{#each course}}
+    ` {{#each course}}
   <div class='card-container col-lg-4'>
       <div class="card">
           <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
@@ -14,40 +14,47 @@ const ListAllshopTemplate =
       </div>
   </div>
   {{/each}}`
-  const ListAllShopFunction = Handlebars.compile(ListAllshopTemplate)
+const ListAllShopFunction = Handlebars.compile(ListAllshopTemplate)
 
-  const displayCourses = (data) => {
+const displayIndexCourses = (data) => {
     $('#All_course_card').html(ListAllShopFunction({ course: data }))
 }
 
-$(() => {
-    axios
-      .get("/display")
-      .then((res) => {
-        // overall info at the top
-        // console.log(in axios);
-      res.data = res.data.map((x) => {
+const edittedTime = (res_data) => {
+    return res_data.map((x) => {
         x.date = x.date.split("T")[0];
-        x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
+        x.timeStart = x.timeStart.split(':').map((x) => parseInt(x));
         x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
         let min =
-          (x.timeEnd[0] - x.timeStart[0]) * 60 +
-          (x.timeEnd[1] - x.timeStart[1]);
+            (x.timeEnd[0] - x.timeStart[0]) * 60 +
+            (x.timeEnd[1] - x.timeStart[1]);
         let hour = min / 60;
         x.duration = hour;
-        // x.timeEnd = x.timeEnd.slice(0, -3);
         return x;
-      });
-        //insert data into handlebars
-        displayCourses(res.data);
-        console.log(res.data);
-      })
-      $('.card-body').on('click', '.card_title', (event) => {
-        let course_id = $(event.currentTarget).closest('.table_row').data('id')
-        sessionStorage.setItem('course_id', course_id)
-    })
-      .catch((err) => console.log(err));
-  });
+    });
+}
+
+
+$(() => {
+    axios
+        .get("/display")
+        .then((res) => {
+            // overall info at the top
+
+            //insert data into handlebars
+            displayIndexCourses(edittedTime(res.data))
+                // console.log(res.data);
+        })
+    $('.card-body').on('click', '.card_title', (event) => {
+            let course_id = $(event.currentTarget).closest('.table_row').data('id')
+            sessionStorage.setItem('course_id', course_id)
+        })
+        // .catch((err) => console.log(err));
+
+
+
+
+});
 // ================================
 //  Get My Course user booked
 // ================================
@@ -72,7 +79,7 @@ const myCourseInfoFunction = Handlebars.compile(myCourseInfoTemplate);
 
 //Define display courses info in myCourse at the table
 const displayBookedCourses = (data) => {
-  $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
+    $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
 };
 
 // ================================
@@ -103,59 +110,59 @@ const myFavInfoFunction = Handlebars.compile(myFavInfoTemplate);
 
 //Define display courses info in myCourse at the table
 const displayFavCourses = (data) => {
-  $("#myfav_course_card").html(myFavInfoFunction({ course: data }));
+    $("#myfav_course_card").html(myFavInfoFunction({ course: data }));
 };
 
 // Document on ready function
 $(() => {
-  axios
-    .get("/mycourse/users/book")
-    .then((res) => {
-      // overall info at the top
-      console.log(`in axios books`);
-      res.data = res.data.map((x) => {
-        x.date = x.date.split("T")[0];
-        x.timeStart = x.timeStart.slice(0, -3);
-        x.timeEnd = x.timeEnd.slice(0, -3);
-        return x;
-      });
-      //insert data into handlebars
-      displayBookedCourses(res.data);
-      console.log("res data", res.data);
-    })
-    .catch((err) => console.log(err));
+    axios
+        .get("/mycourse/users/book")
+        .then((res) => {
+            // overall info at the top
+            // console.log(`in axios books`);
+            res.data = res.data.map((x) => {
+                x.date = x.date.split("T")[0];
+                x.timeStart = x.timeStart.slice(0, -3);
+                x.timeEnd = x.timeEnd.slice(0, -3);
+                return x;
+            });
+            //insert data into handlebars
+            displayBookedCourses(res.data);
+            // console.log("res data", res.data);
+        })
+        .catch((err) => console.log(err));
 
-  axios.get("/mycourse/users/fav").then((res) => {
-    // overall info at the top
-    console.log(`in axios`);
-    res.data = res.data.map((x) => {
-      // date format "yyyyy-mm-dd"
-      x.date = x.date.split("T")[0];
-      // duration
-      x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
-      x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
-      let min =
-        (x.timeEnd[0] - x.timeStart[0]) * 60 + (x.timeEnd[1] - x.timeStart[1]);
-      let hour = min / 60;
-      x.duration = hour;
-      return x;
+    axios.get("/mycourse/users/fav").then((res) => {
+        // overall info at the top
+        // console.log(`in axios`);
+        res.data = res.data.map((x) => {
+            // date format "yyyyy-mm-dd"
+            x.date = x.date.split("T")[0];
+            // duration
+            x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
+            x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
+            let min =
+                (x.timeEnd[0] - x.timeStart[0]) * 60 + (x.timeEnd[1] - x.timeStart[1]);
+            let hour = min / 60;
+            x.duration = hour;
+            return x;
+        });
+        displayFavCourses(res.data);
+
+        $("#mycourse_info_card").on("click", ".card-title", (event) => {
+            let course_id = $(event.currentTarget)
+                .closest(".card-container ")
+                .data("id");
+            sessionStorage.setItem("course_id", course_id);
+        });
+
+        $("#myfav_course_card")
+            .on("click", ".card-title", (event) => {
+                let course_id = $(event.currentTarget)
+                    .closest(".card-container ")
+                    .data("id");
+                sessionStorage.setItem("course_id", course_id);
+            })
+            // .catch((err) => console.log(err));
     });
-    displayFavCourses(res.data);
-
-    $("#mycourse_info_card").on("click", ".card-title", (event) => {
-      let course_id = $(event.currentTarget)
-        .closest(".card-container ")
-        .data("id");
-      sessionStorage.setItem("course_id", course_id);
-    });
-
-    $("#myfav_course_card")
-      .on("click", ".card-title", (event) => {
-        let course_id = $(event.currentTarget)
-          .closest(".card-container ")
-          .data("id");
-        sessionStorage.setItem("course_id", course_id);
-      })
-      .catch((err) => console.log(err));
-  });
 });

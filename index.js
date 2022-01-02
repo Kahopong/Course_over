@@ -1,4 +1,4 @@
-const port = 8001;
+const port = 8000;
 
 //require classes
 //================
@@ -39,11 +39,11 @@ require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-}));
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: true,
+    }));
 app.use(flash());
 
 app.use(express.static(__dirname + "/public"));
@@ -74,12 +74,12 @@ app.use("/myCourse", new MyCourseRouter(myCourseService, express).router());
 app.use("/", new ViewRouter(passport, express).router());
 
 app.get("/", (req, res) => {
-  res.render("usershb/index", { layout: "users_main" });
+    res.render("usershb/index", { layout: "users_main" });
 });
-app.get("/index/course", (req, res)=> {
-  res.render('usershb/courseinfo.handlebars', {layout: 'users_main'})
-})
-// Listen to port
+app.get("/index/course", (req, res) => {
+        res.render('usershb/courseinfo.handlebars', { layout: 'users_main' })
+    })
+    // Listen to port
 app.listen(port, () => {
     console.log(`Listening on ${port}`);
 });

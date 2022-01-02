@@ -12,7 +12,7 @@ exports.seed = function(knex) {
                     timeEnd: '19:30',
                     price: 150,
                     quota: 10,
-                    ageRange: '8-12',
+                    ageRange: 'kids',
                 },
                 {
                     shop_id: 1,
@@ -23,7 +23,7 @@ exports.seed = function(knex) {
                     timeEnd: '21:00',
                     price: 180,
                     quota: 12,
-                    ageRange: '13-16',
+                    ageRange: 'kids,junior',
                 },
                 {
                     shop_id: 2,
@@ -34,7 +34,7 @@ exports.seed = function(knex) {
                     timeEnd: '17:00',
                     price: 250,
                     quota: 5,
-                    ageRange: '18-99',
+                    ageRange: 'adults,senior',
                 },
                 {
                     shop_id: 2,
@@ -45,7 +45,7 @@ exports.seed = function(knex) {
                     timeEnd: '13:00',
                     price: 250,
                     quota: 5,
-                    ageRange: '18-99',
+                    ageRange: 'adults,senior',
                 },
                 {
                     shop_id: 3,
@@ -56,7 +56,7 @@ exports.seed = function(knex) {
                     timeEnd: '18:30',
                     price: 120,
                     quota: 20,
-                    ageRange: '6-12',
+                    ageRange: 'kids',
                 },
                 {
                     shop_id: 3,
@@ -67,7 +67,7 @@ exports.seed = function(knex) {
                     timeEnd: '22:30',
                     price: 180,
                     quota: 20,
-                    ageRange: '18-60',
+                    ageRange: 'adults,senior',
                 },
             ]);
         });

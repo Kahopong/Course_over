@@ -15,22 +15,22 @@ class DisplayService {
         })
     }
 
-    listcourse(id){
-        return this.knex("course").select("*").where({id:id}).then((info) =>{
-            if (info.length==0) {
-                throw new Error('No Courses to display')
-            } else {
-                return info
-            }
-        })
-    }
-    // list() {
-    //     let query = this.knex
-    //     .select("*")
-    //     .from("course")
-    //     .innerJoin("shop", "course.shop_id", "shop.id")
-    //     .orderBy("course.id", "asc")
-       
+    listcourse(id) {
+            return this.knex("course").select("*").where({ id: id }).then((info) => {
+                if (info.length == 0) {
+                    throw new Error('No Courses to display')
+                } else {
+                    return info
+                }
+            })
+        }
+        // list() {
+        //     let query = this.knex
+        //     .select("*")
+        //     .from("course")
+        //     .innerJoin("shop", "course.shop_id", "shop.id")
+        //     .orderBy("course.id", "asc")
+
     //             return query.then((rows) => {
     //                 if(rows.length > 0){
     //                 console.log(rows, "pp");
@@ -46,20 +46,17 @@ class DisplayService {
     //               }
     //         })
     //     }
-      
-    
+
+
 
     sort(sorting) {
         return this.knex('course').select('*')
+            .where('ageRange', 'like', `%${sorting.age}%`)
             .whereIn('category', sorting.category)
-            .andWhere(function() {
-                this.orWhereBetween(
-                    'price', [150, 200],
-                )
-            })
+            .whereBetween('price', sorting.price.map((a) => parseInt(a)))
             .then((info) => {
                 if (info.length == 0) {
-                    throw new Error('No Courses to display')
+                    return ('Sorry! We currently have no courses matching your filter criteria!')
                 } else {
                     return info
                 }
@@ -78,6 +75,6 @@ const knex = require('knex')(knexFile);
 let displayService = new DisplayService(knex);
 
 // displayService.list().then((info) => console.log(info))
-displayService.sort({
-    category: ['Sports', 'Art'],
-}).then((info) => console.log(info))
+// displayService.sort({
+//     category: ['Sports', 'Art'],
+// }).then((info) => console.log(info))

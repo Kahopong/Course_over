@@ -9,99 +9,57 @@
         </div>
 </section>
 
-{{!-- filter form trial --}}
-<section id='section0'>
+{{!-- filter form --}}
+<section id='filter-form'>
+        <div class='filter_form_container d-flex justify-content-center'>
     <div class='filter_form container'>
-    <h4>Filter</h4>
-        <form class="filter row" id="filter_form">
-             <div class="category col-lg-3">
-                    <h5>Category</h5>
-                    <div class="checkbox">
-                        <label><input name="category" type="checkbox" value="Sports"/>Sports</label>
-                    </div>
-                    <div class="checkbox">
-                         <label><input name="category" type="checkbox" value="School Subjects"/>Academic Subjects</label>
-                    </div>
-                    <div class="checkbox">
-                         <label><input name="category" type="checkbox" value="Art"/>Art</label>
-                    </div>  
+    <h4 class='filter_title'>Filters</h4>
+        <form class="filter d-flex flex-column" id="filter_form">
+{{!-- Category Filter --}}
+             <div class="category_container">
+                <p class='filters'>Class Category:</p>
+                <button type="button" class="category_btn btn " data-bs-toggle="button" autocomplete="off" value="Sports">Sports</button>
+                <button type="button" class="category_btn btn " data-bs-toggle="button" autocomplete="off" value="School Subjects">School subjects</button>
+                <button type="button" class="category_btn btn " data-bs-toggle="button" autocomplete="off" value="Art">Art</button>
             </div>
-            {{!-- <div class="price col-lg-3">
-                    <h5>Price</h5>
-                    <div class="checkbox">
-                        <label><input name="price" type="checkbox" value='0'/>$0 - $99</label>
-                    </div>
-                    <div class="checkbox">
-                         <label><input name="price" type="checkbox" value='100'/>$100 - $199</label>
-                    </div>
-                    <div class="checkbox">
-                         <label><input name="price" type="checkbox" value='200'/>$200 - $299</label>
-                    </div>  
-                    <div class="checkbox">
-                         <label><input name="price" type="checkbox" value='300'/>$300+</label>
-                    </div>  
-            </div> --}}
-            <div>
-        <input type="text" class="sliderValue" data-index="0" value="10" />
-        <input type="text" class="sliderValue" data-index="1" value="90" />
-    </div>
-    <br />
-    <div id="slider"></div>
-            
-            <div class="age col-lg-3">
-                    <h5>Age</h5>
-                    <div class="checkbox">
-                        <label><input name="age" type="checkbox" value="kids"/>Kids (0-12years)</label>
-                    </div>
-                    <div class="checkbox">
-                         <label><input name="age" type="checkbox" value="junior"/>Junior (13-18years)</label>
-                    </div>
-                    <div class="checkbox">
-                         <label><input name="age" type="checkbox" value="adults"/>Adults (19-65years)</label>
-                    </div>  
-                    <div class="checkbox">
-                         <label><input name="age" type="checkbox" value="senior"/>Senior (65+years)</label>
-                    </div>  
-            </div>
-    <input type="submit" value="submit" style='width:100px;'/>
-  </form>
-</div>
-</section>
-    <section id='section2'>
-        <div class='categories container-fluid'>
-            <div class='title'>Categories</div>
-            <div class='logoRow row d-flex justify-content-around'>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-                <div class='logo col-lg-1 col-md-4 d-flex flex-column align-items-center'>
-                    <div class='circle'></div>
-                    <h5>Pottery</h5>
-                </div>
-            </div>
+
+{{!-- Age Filter --}}
+        <div class="age_container" role="group" aria-label="Basic radio toggle button group">
+            <p class='filters'>Age Group:</p>
+                <input type="radio" class="btn-check age_btn" name="age" value="kids" id="btnradio1" autocomplete="off">
+                <label class="age_label" for="btnradio1" >Kids (0-12)</label>
+
+                <input type="radio" class="btn-check age_btn" name="age" value="junior" id="btnradio2" autocomplete="off">
+                <label class="age_label" for="btnradio2">Junior (13-17)</label>
+
+                <input type="radio" class="btn-check age_btn" name="age" value="adults" id="btnradio3" autocomplete="off">
+                <label class="age_label" for="btnradio3">Adults (18-65)</label>
+
+                <input type="radio" class="btn-check age_btn" name="age" value="senior" id="btnradio4" autocomplete="off">
+                <label class="age_label" for="btnradio4">Senior (65+)</label>
         </div>
-    </section>
+{{!-- Price Filter --}}
+            <div class='price_container'>
+                
+                <div class='d-flex'>
+                    <p class='filters'>Price:</p>
+                    <div class='d-flex'>
+                        Min<input type="text" name="price" class="sliderValue" data-index="0" value="50" />
+                        Max<input type="text" name="price" class="sliderValue" data-index="1" value="350" />
+                        <div class='slider_container'>
+                        <div id="slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{{!-- Submit button --}}
+        <input type="submit" class='filter_submit_button' value="Filter Classes"/>
+        </form>
+    </div>
+        <hr>
+    </div>
+</section>
+    
 
     <section id='section3'>
         <div class='courses container-fluid '>
