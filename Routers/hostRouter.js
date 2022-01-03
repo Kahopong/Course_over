@@ -37,7 +37,7 @@ class HostRouter {
     // ==================================
     post(req, res) {
         return this.hostService
-            .addCourse(req.session.passport.user.shop_id, req.body.course)
+            .addCourse(req.session.passport.user.shop_id, req.body.add)
             .then(() => {
                 return this.hostService.listCourse(req.session.passport.user.shop_id);
             })

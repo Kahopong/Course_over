@@ -5,7 +5,7 @@ const ListAllCourseTemplate = ` {{#each course}}
           <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
           <div class="card-body" >
           <div class='d-flex justify-content-between'>
-                    <span class="card-text"><h5 class="card-title">{{title}}</h5></span>
+                    <span class="card-text"><h5>{{title}}</h5></span>
                  
                 </div>
               <h6 class="card-subtitle mb-2 text-muted">{{category}}</h6>
@@ -92,7 +92,7 @@ const displayOneCourses = (data) => {
   $("#Section2").html(ListOneCourseFunction(data));
 };
 
-const courseParaTemplate = `
+const coursePara2Template = `
 <div class="course_about">
   <div class="row">
     <div class="col-lg-12">
@@ -111,7 +111,7 @@ const courseParaTemplate = `
     </div>
 </div>`
 
-const courseParaFunction = Handlebars.compile(courseParaTemplate)
+const coursePara2Function = Handlebars.compile(coursePara2Template)
 
 const edittedTime = (res_data) => {
     return res_data.map((x) => {
@@ -150,13 +150,14 @@ $(() => {
         })
       .catch((err) => console.log(err));
     
-      $("#All_course_card").on("click",'.card .course-title', (event) => {
+      $("#All_course_card").on("click",'.course-title', (event) => {
           let course_id = $(event.currentTarget).closest(".card-container").data("id");
           console.log('courseid', course_id)
         sessionStorage.setItem("course_id", course_id);
         
-          // window.location.href = '/index/course';
+        // window.location.href = '/index/course';
       }); 
+      console.log('the id is',sessionStorage.getItem("course_id"))
       $("#section1").on("click",'.card-container .nostyle', (event) => {
         let course_id = $(event.currentTarget).closest(".card-container").data("id");
         console.log('courseid', course_id)
@@ -177,7 +178,7 @@ $(() => {
         get(`/host/course_para/${sessionStorage.getItem("course_id")}`)
         .then((res) => {
             // displayOneCourses(res.data[0]);
-            $('.course_para').html(courseParaFunction(res.data[0]))      
+            $('.course_para').html(coursePara2Function(res.data[0]))      
         })
           .catch((err) => console.log(err));
         });

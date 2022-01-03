@@ -1,14 +1,22 @@
+:root {
+    --color1: #40bab3;
+    --color2: #030e4c;
+    --color3: #ffd335;
+    --color4: #cd0000;
+    --color5: #297373;
+  }
+
 .addcourse,
 .editcourse {
     margin: 200px;
-    border: solid 2px #40BAB3;
+    border: solid 2px var(--color1);
     border-radius: 30px;
 }
 
 .HostC {
     text-align: center;
     font-size: 30px;
-    background: #40BAB3;
+    background: var(--color1);
     color: white;
     padding: 10px;
     border-top-left-radius: 27px;
@@ -42,24 +50,36 @@
     border-radius: 30px;
     background-color: #DFDFDF;
     border-color: #DFDFDF;
-    width: auto;
+ 
+}
+
+#Date,
+#StartT,
+#EndT,
+#AgeR,
+#Quota,
+#Price {
+    width:15vw
 }
 
 #CourseT,
 #Category,
 #Location {
-    width: 80%;
+    width: 47.5vw;
 }
 
 .grid-item1,
 .grid-item2,
-.grid-item3,
 .grid-item4,
-.grid-item9 {
+.grid-item9
+{
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
+.grid-item9 label{
+    padding-right: 50px;
+}
 .CourseD2 {
     padding-left: 150px;
 }
@@ -73,10 +93,18 @@
 .CourseIm2 {
     padding-left: 150px;
 }
+.addcourse .btn6{
+    margin-left: 40%;
+    width: 20%;
+    border-radius: 30px;
+    margin-top: 80px;
+    margin-bottom: 60px;;
+    background-color: var(--color3);
+}
 
-#Banner {
+/* #Banner {
     border-radius: 30px;
     background-color: #DFDFDF;
     border-color: #DFDFDF;
     width: 500px;
-}
+} */
