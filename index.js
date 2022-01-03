@@ -1,4 +1,4 @@
-const port = 8001;
+const port = 8000;
 
 //require classes
 //================
@@ -28,9 +28,9 @@ const knex = require("knex")(knexFile);
 //Configure express, handlebars
 //=============================
 const express = require("express");
-const expressFileUpload = require('express-fileupload')
-const fs = require('fs');
-const path = require('path')
+const expressFileUpload = require("express-fileupload");
+const fs = require("fs");
+const path = require("path");
 const { engine } = require("express-handlebars");
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -45,11 +45,11 @@ require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
-    session({
-        secret: process.env.SECRET,
-        resave: false,
-        saveUninitialized: true,
-    })
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
 );
 app.use(flash());
 
@@ -69,11 +69,10 @@ const bookService = new BookService(knex);
 const displayService = new DisplayService(knex);
 const favService = new FavService(knex);
 const hostService = new HostService(knex);
-const uploadPath = __dirname + "/uploaded"
+const uploadPath = __dirname + "/uploaded";
 const imageService = new ImageService(uploadPath, fs, path);
 const infoService = new InfoService(knex);
 const myCourseService = new MyCourseService(knex);
-
 
 app.use("/book", new BookRouter(bookService, express).router());
 app.use("/display", new DisplayRouter(displayService, express).router());
@@ -85,14 +84,14 @@ app.use("/myCourse", new MyCourseRouter(myCourseService, express).router());
 app.use("/", new ViewRouter(passport, express).router());
 
 app.get("/", (req, res) => {
-    res.render("usershb/index", { layout: "login_main" });
+  res.render("usershb/index", { layout: "login_main" });
 });
 // app.get("/index/course", (req, res) => {
 //     res.render("usershb/courseinfo.handlebars", { layout: "login_main" });
 // });
 // Listen to port
 app.listen(port, () => {
-    console.log(`Listening on ${port}`);
+  console.log(`Listening on ${port}`);
 });
 
 module.exports = app;

@@ -1,4 +1,5 @@
-const ListAllCourseTemplate = ` {{#each course}}
+const ListAllCourseTemplate = ` 
+{{#each course}}
   <div class='card-container col-lg-4' data-id="{{id}}">
   <a href="/index/course" class="course-title"> 
       <div class="card" >
@@ -21,66 +22,68 @@ const ListAllCourseTemplate = ` {{#each course}}
   {{/each}}`;
 const ListAllCourseFunction = Handlebars.compile(ListAllCourseTemplate);
 
-const ListOneCourseTemplate = `  <div class="container">
-      <div class="row course">
-          <div class="col-lg-8 col-sm-12 ">
-              <!-- Title + Fav Row -->
-              <div class="row course_head">
-                  <div class="title col-lg-11"><h4 class="courseinfo_h4">{{title}}</h4></div>
-                  <div class="fav_icon col-lg-1"><i class="far fa-heart"></i></div>
-              </div>
-              <div class="course_feature">
-                  <div class="row">
-                      <div class="col-lg-6 ">
-                          <i class="fas fa-users courseinfo_i"></i>
-                          <span>Age Range: {{ageRange}}</span>
-                      </div>
-                      <div class="col-lg-6 ">
-                          <i class="fas fa-chart-pie courseinfo_i"></i>
-                          <span>Quota: {{quota}}</span>
-                      </div>
-                  </div>
-              </div>
-              <div class="course_para">
-                    
-              </div>
+const ListOneCourseTemplate = `  
+<div class="container">
+    <div class="row course">
+        <div class="col-lg-8 col-sm-12 ">
+            <!-- Title + Fav Row -->
+            <div class="row course_head">
+                <div class="title col-lg-11"><h4 class="courseinfo_h4">{{title}}</h4></div>
+                <div class="col-lg-1">
+                    <div class="fav_icon "><i class="far fa-heart notfavCourse"></i></div>
+                    <div class="fav_icon "><i class="fas fa-heart favCourse"></i></div>
+                </div>
+            </div>
+            <div class="course_feature">
+                <div class="row">
+                    <div class="col-lg-6 ">
+                        <i class="fas fa-users courseinfo_i"></i>
+                        <span>Age Range: {{ageRange}}</span>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <i class="fas fa-chart-pie courseinfo_i"></i>
+                        <span>Quota: {{quota}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course_para">
+                
+            </div>
 
-              <div>
-                  <div class="row">
-                      <div class="col-lg-12">
-                          <p class="course_specialnote_text">{{specialNote}}</p>
-                      </div>
-                  </div>
-              </div>
-
-          </div>
-          <div class="col-lg-4 col-sm-12 courseInfo">
-              <div class="courseInfo_container">
-                  <div class="courseInfo_title">Course Details</div>
-                      <table class="courseInfo_content">
-                          <tbody>
-                          <tr>
-                              <td class="icon_col"><i class="fas fa-calendar courseinfo_i"></i></td>
-                              <td class="info_col">{{date}}</td>
-                          </tr>
-                          <tr>
-                              <td class="icon_col"><i class="fas fa-clock courseinfo_i"></i></td>
-                              <td class="info_col">{{timeStart}} - {{timeEnd}}</td>
-                          </tr>
-                          <tr>
-                              <td class="icon_col"><i class="fas fa-tag courseinfo_i"></i></td>
-                              <td class="info_col">HKD{{price}}</td>
-                          </tr>
-                          </tbody>
-                      </table>
-                      <button type="button" class="booknow btn">BOOK NOW</button>
-                      <button type="button" class="unbook btn">BOOKED</button>                        
-                  </div>
-              </div>
-          </div>
-
-      </div>`
-
+            <div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="course_specialnote_text">{{specialNote}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 courseInfo">
+            <div class="courseInfo_container">
+                <div class="courseInfo_title">Course Details</div>
+                    <table class="courseInfo_content">
+                        <tbody>
+                        <tr>
+                            <td class="icon_col"><i class="fas fa-calendar courseinfo_i"></i></td>
+                            <td class="info_col">{{date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="icon_col"><i class="fas fa-clock courseinfo_i"></i></td>
+                            <td class="info_col">{{timeStart}} - {{timeEnd}}</td>
+                        </tr>
+                        <tr>
+                            <td class="icon_col"><i class="fas fa-tag courseinfo_i"></i></td>
+                            <td class="info_col">HKD$ {{price}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="booknow btn">BOOK NOW</button>
+                    <button type="button" class="unbook btn">BOOKED</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
 
 const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate);
 
@@ -109,85 +112,205 @@ const coursePara2Template = `
         </div>
         <p>{{specialNote}}</p>
     </div>
-</div>`
+</div>`;
 
-const coursePara2Function = Handlebars.compile(coursePara2Template)
+const coursePara2Function = Handlebars.compile(coursePara2Template);
 
 const edittedTime = (res_data) => {
-    return res_data.map((x) => {
-        x.date = x.date.split("T")[0];
-        x.timeStart = x.timeStart.split(':').map((x) => parseInt(x));
-        x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
-        let min =
-            (x.timeEnd[0] - x.timeStart[0]) * 60 +
-            (x.timeEnd[1] - x.timeStart[1]);
-        let hour = min / 60;
-        x.duration = hour;
-        return x;
-    });
-}
+  return res_data.map((x) => {
+    x.date = x.date.split("T")[0];
+    x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
+    x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
+    let min =
+      (x.timeEnd[0] - x.timeStart[0]) * 60 + (x.timeEnd[1] - x.timeStart[1]);
+    let hour = min / 60;
+    x.duration = hour;
+    return x;
+  });
+};
 
 function edittedTime2(data) {
-    data.price = data.price.split(".")[0];
-    data.date = data.date.split("T")[0];
-    data.timeStart = data.timeStart.slice(-8, -3)
-    data.timeEnd = data.timeEnd.slice(-8, -3)
-    console.log("hi", data)
-    return data;
-
-
+  data.price = data.price.split(".")[0];
+  data.date = data.date.split("T")[0];
+  data.timeStart = data.timeStart.slice(-8, -3);
+  data.timeEnd = data.timeEnd.slice(-8, -3);
+  console.log("In edittedTime2 function", data);
+  return data;
 }
 
 $(() => {
+  axios
+    .get("/display")
+    .then((res) => {
+      // overall info at the top
+      //insert data into handlebars
+      displayIndexCourses(edittedTime(res.data));
+      // console.log(res.data);
+    })
+    .catch((err) => console.log(err));
+
+  $("#All_course_card").on("click", ".course-title", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container")
+      .data("id");
+    console.log("courseid", course_id);
+    sessionStorage.setItem("course_id", course_id);
+
+    // window.location.href = '/index/course';
+  });
+
+  // get course id on my Course
+  $("#section1").on("click", ".card-container .nostyle", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container")
+      .data("id");
+    console.log("courseid", course_id);
+    sessionStorage.setItem("course_id", course_id);
+
+    // window.location.href = '/index/course';
+  });
+
+  axios
+    .get(`/display/${sessionStorage.getItem("course_id")}`)
+    .then((res) => {
+      displayOneCourses(edittedTime2(res.data[0]));
+
+      console.log(res.data[0]);
+    })
+    .catch((err) => console.log(err));
+
+  // =================================================================
+  // Check Booked or not - change button depends on paid status
+  // =================================================================
+  axios
+    .get(`/book/users/${sessionStorage.getItem("course_id")}`)
+    .then((res) => {
+      console.log(`Check Booked or not`, res.data);
+      if (res.data != false) {
+        $(".booknow").hide();
+        $(".unbook").show();
+      } else if (res.data == false) {
+        console.log("gohome");
+        $(".booknow").show();
+        $(".unbook").hide();
+      }
+    })
+    .catch((err) => console.log(err));
+
+  //   Book button -> post request
+  $("#Section2").on("click", ".booknow", (event) => {
     axios
-        .get("/display")
-        .then((res) => {
-            // overall info at the top
+      .post(`/book/users/${sessionStorage.getItem("course_id")}`)
+      .then(() => {
+        axios
+          .get(`/book/users/${sessionStorage.getItem("course_id")}`)
+          .then((res) => {
+            console.log(`Check Booked or not`, res.data);
+            if (res.data != false) {
+              $(".booknow").hide();
+              $(".unbook").show();
+            } else if (res.data == false) {
+              $(".booknow").show();
+              $(".unbook").hide();
+            }
+          });
+      })
+      .catch((err) => console.log(err));
+  });
 
-            //insert data into handlebars
-            displayIndexCourses(edittedTime(res.data))
-                // console.log(res.data);
-        })
-        .catch((err) => console.log(err));
+  // Unbook button -> detele request
+  $("#Section2").on("click", ".unbook", (event) => {
+    axios
+      .delete(`/book/users/${sessionStorage.getItem("course_id")}`)
+      .then(() => {
+        axios
+          .get(`/book/users/${sessionStorage.getItem("course_id")}`)
+          .then((res) => {
+            console.log(`Check Booked or not`, res.data);
+            if (res.data === undefined) {
+              $(".booknow").hide();
+              $(".unbook").show();
+            } else {
+              $(".booknow").show();
+              $(".unbook").hide();
+            }
+          });
+      })
+      .catch((err) => console.log(err));
+  });
 
-    $("#All_course_card").on("click", '.card .course-title', (event) => {
-        let course_id = $(event.currentTarget).closest(".card-container").data("id");
-        console.log('courseid', course_id)
-        sessionStorage.setItem("course_id", course_id);
+  // =================================================================
+  // Check Fav-ed or not - change button depends on paid status
+  // =================================================================
+  axios
+    .get(`/fav/users/${sessionStorage.getItem("course_id")}`)
+    .then((res) => {
+      console.log(`Check fav-ed or not`, res.data);
+      //   fav-ed
+      if (res.data.length > 0) {
+        $(".favCourse").show();
+        $(".notfavCourse").hide();
+      } else if (res.data == false) {
+        $(".favCourse").hide();
+        $(".notfavCourse").show();
+      }
+    })
+    .catch((err) => console.log(err));
 
-        // window.location.href = '/index/course';
-    });
-    $("#section1").on("click", '.card-container .nostyle', (event) => {
-        let course_id = $(event.currentTarget).closest(".card-container").data("id");
-        console.log('courseid', course_id)
-        sessionStorage.setItem("course_id", course_id);
+  //   Fav button -> post request
+  $("#Section2").on("click", ".notfavCourse", (event) => {
+    axios
+      .post(`/fav/users/${sessionStorage.getItem("course_id")}`)
+      .then(() => {
+        axios
+          .get(`/fav/users/${sessionStorage.getItem("course_id")}`)
+          .then((res) => {
+            console.log(`Check Fav-ed or not`, res.data);
+            if (res.data.length > 0) {
+              $(".favCourse").show();
+              $(".notfavCourse").hide();
+            } else if (res.data == false) {
+              $(".favCourse").hide();
+              $(".notfavCourse").show();
+            }
+          });
+      })
+      .catch((err) => console.log(err));
+  });
 
-        // window.location.href = '/index/course';
-    });
-    axios.
-    get(`/display/${sessionStorage.getItem("course_id")}`)
-        .then((res) => {
-            displayOneCourses(edittedTime2(res.data[0]));
+  //   Fav button -> delete request
+  $("#Section2").on("click", ".favCourse", (event) => {
+    axios
+      .delete(`/fav/users/${sessionStorage.getItem("course_id")}`)
+      .then(() => {
+        axios
+          .get(`/fav/users/${sessionStorage.getItem("course_id")}`)
+          .then((res) => {
+            console.log(`Check Fav-ed or not`, res.data);
+            if (res.data.length === undefined) {
+              $(".favCourse").hide();
+              $(".notfavCourse").show();
+            } else {
+              $(".favCourse").show();
+              $(".notfavCourse").hide();
+            }
+          });
+      })
+      .catch((err) => console.log(err));
+  });
 
-            console.log(res.data[0]);
-        })
-        .catch((err) => console.log(err));
-    //get one course para
-    axios.
-    get(`/host/course_para/${sessionStorage.getItem("course_id")}`)
-        .then((res) => {
-            // displayOneCourses(res.data[0]);
-            $('.course_para').html(courseParaFunction(res.data[0]))
-        })
-        .catch((err) => console.log(err));
+  //get one course para
+  axios
+    .get(`/host/course_para/${sessionStorage.getItem("course_id")}`)
+    .then((res) => {
+      // displayOneCourses(res.data[0]);
+      $(".course_para").html(coursePara2Function(res.data[0]));
+    })
+    .catch((err) => console.log(err));
 });
-console.log('the id is', sessionStorage.getItem("course_id"))
+console.log("the id is", sessionStorage.getItem("course_id"));
 
 // window.location.href = '/index/course';
-
-
-
-
 
 // ================================================================
 //  Get My Course user booked

@@ -169,3 +169,24 @@ Right card
   display: flex;
   justify-content: center;
 }
+
+.unbook:hover {
+  content: "UNBOOK";
+}
+
+.favCourse,
+.unfavCourse {
+  cursor: pointer;
+}
+
+.favCourse {
+  color: var(--color4);
+}
+
+/* .unfavhover {
+  display: none;
+}
+
+.favcourse:hover > .unfavhover {
+  display: inline block;
+} */
