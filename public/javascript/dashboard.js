@@ -32,12 +32,18 @@ const edittedDate = (res_data) => {
 
 // Document on ready function
 $(() => {
+  axios.get("/info/shop").then((res) => {
+    console.log("info shop", res.data);
+    $("#company_name").html(res.data[0].company);
+    $("#navbar_company_name").html(`Hello, ${res.data[0].company}!`);
+  });
+
   axios
     .get("/host/shop")
     .then((res) => {
       // overall info at the top
       console.log(res.data);
-      $("#company_name").html(res.data[0].company);
+
       $("#listing_course_num").html(res.data.length);
       let courses = res.data;
       for (let i = 0; i < courses.length; i++) {
@@ -52,7 +58,7 @@ $(() => {
           .then(() => displayCourses(res.data));
       }
       //table body
-      displayCourses(res.data);
+      displayCourses(edittedDate(res.data));
 
       //Delete button click listener
       //To be confirmed (change status to 'Inactive')

@@ -46,21 +46,6 @@ class InfoRouter {
   // ==================================
   putUsers(req, res) {
     return this.infoService
-      .editUser(2, req.body.edit)
-      .then(() => this.infoService.listUser(2))
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((err) => {
-        res.status(500);
-        return res.json(err);
-      });
-  }
-
-  // Edit Users Info
-  // ==================================
-  putUsers(req, res) {
-    return this.infoService
       .editUser(req.session.passport.user.users_id, req.body.edit)
       .then(() => this.infoService.listUser(req.session.passport.user.users_id))
       .then((data) => {

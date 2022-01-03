@@ -88,11 +88,11 @@ const ListOneCourseTemplate = `
 const ListOneCourseFunction = Handlebars.compile(ListOneCourseTemplate);
 
 const displayIndexCourses = (data) => {
-    $("#All_course_card").html(ListAllCourseFunction({ course: data }));
+  $("#All_course_card").html(ListAllCourseFunction({ course: data }));
 };
 
 const displayOneCourses = (data) => {
-    $("#Section2").html(ListOneCourseFunction(data));
+  $("#Section2").html(ListOneCourseFunction(data));
 };
 
 const coursePara2Template = `
@@ -336,32 +336,32 @@ const myCourseInfoFunction = Handlebars.compile(myCourseInfoTemplate);
 
 //Define display courses info in myCourse at the table
 const displayBookedCourses = (data) => {
-    $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
+  $("#mycourse_info_card").html(myCourseInfoFunction({ course: data }));
 };
 
 $(() => {
-    axios
-        .get("/mycourse/users/book")
-        .then((res) => {
-            // overall info at the top
-            res.data = res.data.map((x) => {
-                x.date = x.date.split("T")[0];
-                x.timeStart = x.timeStart.slice(0, -3);
-                x.timeEnd = x.timeEnd.slice(0, -3);
-                return x;
-            });
-            //insert data into handlebars
-            displayBookedCourses(res.data);
-            console.log("Get course booked in My Course", res.data);
-        })
-        .catch((err) => console.log(err));
+  axios
+    .get("/mycourse/users/book")
+    .then((res) => {
+      // overall info at the top
+      res.data = res.data.map((x) => {
+        x.date = x.date.split("T")[0];
+        x.timeStart = x.timeStart.slice(0, -3);
+        x.timeEnd = x.timeEnd.slice(0, -3);
+        return x;
+      });
+      //insert data into handlebars
+      displayBookedCourses(res.data);
+      console.log("Get course booked in My Course", res.data);
+    })
+    .catch((err) => console.log(err));
 
-    $("#mycourse_info_card").on("click", ".card-title", (event) => {
-        let course_id = $(event.currentTarget)
-            .closest(".card-container ")
-            .data("id");
-        sessionStorage.setItem("course_id", course_id);
-    });
+  $("#mycourse_info_card").on("click", ".card-title", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container ")
+      .data("id");
+    sessionStorage.setItem("course_id", course_id);
+  });
 });
 
 // ================================================================
@@ -394,39 +394,39 @@ const myFavInfoFunction = Handlebars.compile(myFavInfoTemplate);
 
 //Define display courses info in myCourse at the table
 const displayFavCourses = (data) => {
-    $("#myfav_course_card").html(myFavInfoFunction({ course: data }));
+  $("#myfav_course_card").html(myFavInfoFunction({ course: data }));
 };
 
 // Document on ready function
 $(() => {
-    axios
-        .get("/mycourse/users/fav")
-        .then((res) => {
-            // overall info at the top
-            res.data = res.data.map((x) => {
-                // date format "yyyyy-mm-dd"
-                x.date = x.date.split("T")[0];
-                // duration
-                x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
-                x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
-                let min =
-                    (x.timeEnd[0] - x.timeStart[0]) * 60 +
-                    (x.timeEnd[1] - x.timeStart[1]);
-                let hour = min / 60;
-                x.duration = hour;
-                return x;
-            });
-            displayFavCourses(res.data);
-            console.log("Get course fav in My Course", res.data);
-        })
-        .catch((err) => console.log(err));
+  axios
+    .get("/mycourse/users/fav")
+    .then((res) => {
+      // overall info at the top
+      res.data = res.data.map((x) => {
+        // date format "yyyyy-mm-dd"
+        x.date = x.date.split("T")[0];
+        // duration
+        x.timeStart = x.timeStart.split(":").map((x) => parseInt(x));
+        x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
+        let min =
+          (x.timeEnd[0] - x.timeStart[0]) * 60 +
+          (x.timeEnd[1] - x.timeStart[1]);
+        let hour = min / 60;
+        x.duration = hour;
+        return x;
+      });
+      displayFavCourses(res.data);
+      console.log("Get course fav in My Course", res.data);
+    })
+    .catch((err) => console.log(err));
 
-    $("#myfav_course_card").on("click", ".card-title", (event) => {
-        let course_id = $(event.currentTarget)
-            .closest(".card-container ")
-            .data("id");
-        sessionStorage.setItem("course_id", course_id);
-    });
+  $("#myfav_course_card").on("click", ".card-title", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container ")
+      .data("id");
+    sessionStorage.setItem("course_id", course_id);
+  });
 });
 
 // ================================================================
@@ -464,7 +464,7 @@ const editMemberInfoTemplate = `
           </div>
           <div class="col-lg-6">
               <label for="sex">Sex</label><br>
-              <input type="radio" value="male" id="sexb" class="sex" name="sex" checked>Male
+              <input type="radio" value="male" id="sexb" class="sex" name="sex">Male
               <input type="radio" value="female" id="sexg" class="sex" name="sex">Female
           </div>
       </div>
@@ -482,40 +482,40 @@ const editMemberInfoFunction = Handlebars.compile(editMemberInfoTemplate);
 
 // Document on ready function
 $(() => {
-    axios.get("/info/users").then((res) => {
-        res.data = res.data.map((x) => {
-            // date format "yyyyy-mm-dd"
-            x.dob = x.dob.split("T")[0];
-            return x;
-        });
-
-        $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
-
-        // member info Edit Form submit
-        $("#edit_member_info").submit((e) => {
-            e.preventDefault();
-            console.log("enter to edit user submit");
-            let serializeArray = $("#edit_member_info").serializeArray();
-            // let generalInfo = serializeArray.slice(0, 8);
-            // let paraInfo = serializeArray.slice(8);
-            let editUser = serializeArray.reduce((obj, input) => {
-                obj[input.name] = input.value;
-                return obj;
-            }, {});
-            console.log(`edit user`, editUser);
-
-            axios
-                .put(`/info/users/`, {
-                    edit: editUser,
-                })
-                .then((res) => {
-                    $("#success_editUser_msg").html(
-                        `Your account '${editUser.username}' has been edited `
-                    );
-                });
-            window.location = "/";
-        });
+  axios.get("/info/users").then((res) => {
+    res.data = res.data.map((x) => {
+      // date format "yyyyy-mm-dd"
+      x.dob = x.dob.split("T")[0];
+      return x;
     });
+
+    $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
+
+    // member info Edit Form submit
+    $("#edit_member_info").submit((e) => {
+      e.preventDefault();
+      console.log("enter to edit user submit");
+      let serializeArray = $("#edit_member_info").serializeArray();
+      // let generalInfo = serializeArray.slice(0, 8);
+      // let paraInfo = serializeArray.slice(8);
+      let editUser = serializeArray.reduce((obj, input) => {
+        obj[input.name] = input.value;
+        return obj;
+      }, {});
+      console.log(`edit user`, editUser);
+
+      axios
+        .put(`/info/users/`, {
+          edit: editUser,
+        })
+        .then((res) => {
+          $("#success_editUser_msg").html(
+            `Your account '${editUser.username}' has been edited `
+          );
+        });
+      window.location = "/";
+    });
+  });
 });
 
 // ================================================================

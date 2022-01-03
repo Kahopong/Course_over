@@ -24,10 +24,7 @@ class InfoService {
       .where("id", id)
       .then((info) => {
         if (info.length > 0) {
-          return this.knex("shop")
-            .join("shop_pic", "shop.id", "=", "shop_pic.shop_id")
-            .select("*")
-            .where("shop.id", id);
+          return this.knex("shop").select("*").where("shop.id", id);
         } else {
           throw new Error("Shop not existing, cannot list info.");
         }
