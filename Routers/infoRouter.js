@@ -14,19 +14,31 @@ class InfoRouter {
         return router;
     }
 
-    // GET Users Info
-    // ==================================
-    getUsers(req, res) {
-        return this.infoService
-            .listUser(req.session.passport.user.users_id)
-            .then((data) => {
-                res.json(data);
-            })
-            .catch((err) => {
-                res.status(500);
-                return res.json(err);
-            });
+  // GET Users Info
+  // ==================================
+  getUsers(req, res) {
+    if(req.session.passport!= undefined){
+      return this.infoService
+      .listUser(req.session.passport.user.users_id)
+      .then((data) => {
+        res.json(data);
+      }).catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
+    }else{
+      this.infoService
+      .listUser(1)
+      .then((data) => {
+        res.json('no');
+      }).catch((err) => {
+        res.status(500);
+        return res.json(err);
+      });
     }
+    
+      
+  }
 
     // GET Shop Info
     // ==================================

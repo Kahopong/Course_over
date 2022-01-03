@@ -41,11 +41,7 @@ class ViewRouter {
         //     })
         // })
         router.get("/index", (req, res) => {
-
-            if (
-                req.session.passport != undefined &&
-                req.session.passport.user.isUser == true
-            ) {
+            if (req.session.passport != undefined && req.session.passport.user.isUser == true) {
                 // console.log("My user is", req.session.passport.user)
                 res.render("usershb/index", {
                     layout: "users_main",

@@ -241,7 +241,7 @@ $(() => {
                 .then((res) => {
                     console.log("edited");
                 });
-            window.location = "/dashboard";
+            window.location.href = "/dashboard";
         });
     });
 
