@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     
     {{!-- CSS stylesheets --}}
+    <base href="/">
     <link rel="stylesheet" href="./stylesheet/navBar.css">
     <link rel="stylesheet" href="./stylesheet/login.css">
     <link rel="stylesheet" href="./stylesheet/signup.css">
@@ -30,16 +31,6 @@
 </head>
 
 <body>
-{{!-- <nav>
-    <ul class="navi">
-            <li class="navi1">
-                <a class="nav-link1 disabled" aria-current="page" >CourseOver</a>
-            </li>
-            <li class="navi2" style="float:right">
-                <a class="nav-link2"  href="#">LOG IN | JOIN</a>
-            </li>
-    </ul>   
-</nav>  --}}
 
 <nav class="navbar navbar-expand-lg" id="mainNav">
     <div class="container">
@@ -50,7 +41,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link nostyle" href="/login">LOG IN | JOIN</a></li>
+                <li class="nav-item"><a class="nav-link nostyle" href="/login">SIGN IN | JOIN</a></li>
             </ul>
         </div>
     </nav>
@@ -75,8 +66,7 @@
                     </div>
                     <div class='account col-lg-5'>
                         <h5>ACCOUNT</h5>
-                        <p>My Account</p>
-                        <p>My Course</p>
+                        <a href="/login" class="nostyle"><p>SIGN IN | JOIN</p></a>
                     </div>
                 </div>
                 <div class='copyright row col-lg-12'>

@@ -48,7 +48,6 @@ $(() => {
       let courses = res.data;
       for (let i = 0; i < courses.length; i++) {
         let courseId = courses[i].id;
-
         axios
           .get(`/book/shop/${courseId}`)
           .then((res) => {
@@ -70,11 +69,24 @@ $(() => {
         axios
           .delete(`/host/shop/${delete_id}`)
           .then((res) => {
+            let courses = res.data;
+            for (let i = 0; i < courses.length; i++) {
+              let courseId = courses[i].id;
+              axios
+                .get(`/book/shop/${courseId}`)
+                .then((res) => {
+                  let bookNum = res.data.length;
+                  courses[i].bookNum = bookNum;
+                })
+                .then(() => displayCourses(res.data));
+            }
+
             displayCourses(res.data);
             $("#delete_msg").html(
               `Your course '${delete_title}' is successfully deleted.`
             );
           })
+
           .catch((err) => console.log(err));
       });
 

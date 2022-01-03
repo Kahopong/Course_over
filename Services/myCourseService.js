@@ -11,7 +11,8 @@ class MyCourseService {
       .select("*")
       .from("user_booking")
       .join("course", "user_booking.course_id", "course.id")
-      .where("users_id", user_id);
+      .where("users_id", user_id)
+      .where("listing", null);
   }
 
   listfav(user_id) {
@@ -19,7 +20,8 @@ class MyCourseService {
       .select("*")
       .from("user_favorite")
       .join("course", "user_favorite.course_id", "course.id")
-      .where("users_id", user_id);
+      .where("users_id", user_id)
+      .where("listing", null);
   }
 }
 
@@ -32,4 +34,4 @@ const knex = require("knex")(knexFile);
 let myCourseService = new MyCourseService(knex);
 
 // myCourseService.listbooking(2)
-myCourseService.listfav(1)
+myCourseService.listfav(1);

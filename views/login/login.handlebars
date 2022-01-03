@@ -16,19 +16,17 @@
                
              </div> --}}
              <div class="card1_2">
-                 <div>Member</div>
+                <div>Member</div>
                 <label class="switch">
-                <input type="checkbox" name="host" value="true">
-                <span class="slider round" data-on="Yes" data-off="No"></span>
+                    <input type="checkbox" name="host" value="true">
+                    <span class="slider round" data-on="Yes" data-off="No"></span>
                 </label>
                 <div>Host</div>
             </div>
 
            
             <div class="btnsignin">
-             <button type="submit" class="btn btn-warning btn3">SIGN IN</button>
-              {{!-- <input type="submit"  value="Sign up" class="btn-warning btnlogin"/> --}}
-              
+             <button type="submit" class="btn btn3">SIGN IN</button>            
                
             </div>
                </form>
@@ -36,17 +34,17 @@
         <div class="card3">
             <div class="create">Create Account</div>
             <div class="joinc">
-            <a type="button" class="btn btn-success btn1" href="/signup">I want to join a course</a>
+            <a  class="btn btn1" href="/signup">I want to join a course</a>
             </div>
             <div class="hostc">
-            <a type="button" class="btn btn-success btn2" href="/shopsignup">I want to host a course</a>
+            <a  class="btn btn2" href="/shopsignup">I want to host a course</a>
             </div>
         </div>
     
     </div>
    
-                      {{#if error}}
-    <h3>{{error}}</h3>
+ {{#if error}}
+    <h3 class="login_error">{{error}}</h3>
     {{/if}}
     
 </body>
