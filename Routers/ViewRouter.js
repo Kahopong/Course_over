@@ -42,10 +42,7 @@ class ViewRouter {
     // })
     router.get("/index", (req, res) => {
       // console.log("My user is 3 ",  req.session.passport.user)
-      if (
-        req.session.passport != undefined &&
-        req.session.passport.user.isUser == true
-      ) {
+      if (req.session.passport != undefined && req.session.passport.user.isUser == true) {
         res.render("usershb/index", {
           layout: "users_main",
         });
@@ -57,10 +54,7 @@ class ViewRouter {
     });
 
     router.get("/index/course", (req, res) => {
-      if (
-        req.session.passport != undefined &&
-        req.session.passport.user.isUser == true
-      ) {
+      if (req.session.passport != undefined && req.session.passport.user.isUser == true) {
         res.render("usershb/courseinfo", {
           // user: req.session.passport.user.username,
           layout: "users_main",
@@ -104,6 +98,7 @@ class ViewRouter {
     //         failureFlash: true,
     //     })
     // );
+   
 
     let passportCopy = this.passport;
     router.post("/login", function (req, res, next) {
@@ -126,6 +121,8 @@ class ViewRouter {
         });
       })(req, res, next);
     });
+
+         
 
     router.get("/logout", (req, res) => {
       console.log("logging out");

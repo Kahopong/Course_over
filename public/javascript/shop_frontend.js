@@ -190,6 +190,7 @@ $(() => {
           `Your course '${addCourse.title}' has been added`
         );
       });
+      window.location.href = '/dashboard'
   });
 
   //edit course

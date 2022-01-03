@@ -28,10 +28,12 @@
 .d1{
     margin-top: 50px;
 }
-.row{
+.dbox .row{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-evenly;
+    padding-left:20%;
+    
 }
 /* .d1,.d2,.d3{
     display: flex;
