@@ -109,7 +109,10 @@ class ViewRouter {
         //Shop side handlebars (default)
         router.get("/dashboard", (req, res) => {
             console.log('passportDB', req.session.passport.user.shop_id)
-            res.render("shophb/dashboard", { name: "Fanki" });
+            res.render("shophb/dashboard", {
+                name: "Fanki",
+                shop_id: req.session.passport.user.shop_id
+            });
         });
 
         router.get("/edit_shop_info", (req, res) => {

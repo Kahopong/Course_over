@@ -12,7 +12,7 @@ class HostService {
             .where("shop_id", id)
             .then((data) => {
                 if (data.length > 0) {
-                    return this.knex("course").select("*").where("shop_id", id);
+                    return this.knex("course").select("*").where("shop_id", id).where('listing', null);
                 } else {
                     throw new Error("Shop not existing, cannot list course.");
                 }
@@ -77,7 +77,7 @@ class HostService {
             .then((data) => {
                 if (data.length === 1) {
                     return this.knex("course").where("id", course_id).update({
-                        listing: false,
+                        listing: true,
                     });
                 } else {
                     throw new Error(

@@ -1,37 +1,33 @@
 //Uploading Images
 
 class ImageService {
-    constructor(knex) {
-        this.knex = knex
+    constructor(uploadDirectory, fs, path) {
+        this.uploadDirectory = uploadDirectory
+        this.fs = fs
+        this.path = path
+        this.caches = {}
     }
 
-    fav(users_id, course_id) {
-        return this.knex('user_favorite').select('*').where({ users_id: users_id, course_id: course_id }).then((info) => {
-            if (info.length == 0) {
-                return this.knex('user_favorite').insert({
-                    users_id: users_id,
-                    course_id: course_id,
-                })
-            } else {
-                throw new Error('User favorite record already exists.')
-            }
-        })
-    }
-
-    unfav(users_id, course_id) {
-        return this.knex('user_favorite').select('*').where({ users_id: users_id, course_id: course_id }).then((info) => {
-            if (info.length > 0) {
-                return this.knex('user_favorite').where({
-                    users_id: users_id,
-                    course_id: course_id,
-                }).del()
-            } else {
-                throw new Error('Cannot unfav, user favorite record does not exist.')
-            }
-        })
+    readFile(file) {
+        return new Promise((resolve, reject) => {
+            this.caches[file] = this.fs.readFileSync(this.uploadDirectory + '/' + file)
+            console.log(this.caches)
+            if (this.caches[file]) {
+                resolve(file)
+            } else reject(`Failed to download ${file}`)
+        });
     }
 
 
+    //Upload Images
+    writeFile(courseId, file) {
+        return new Promise((resolve, reject) => {
+            let fileName = `course${courseId}`
+            this.fs.writeFileSync(this.uploadDirectory + `/` + fileName + `.jpeg`, file.data)
+            console.log('uploaded', fileName)
+            resolve(fileName)
+        });
+    }
 
 
 }
