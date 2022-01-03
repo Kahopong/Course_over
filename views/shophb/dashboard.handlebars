@@ -1,13 +1,16 @@
 {{!-- 3 buttons --}}
 
 <section id='section1'>
+    <p id='shop_id'>{{shop_id}}</p>
         <div class='stats container d-flex justify-content-between'>
-            <a href='/edit_shop_info'>
-            <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
-                <img class='companyLogo' src='lego.jpeg'>
-                <p id='company_name'> req.passport company name</p>
-            </div>
+            
+            <a href='/edit_shop_info' class='nostyle stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
+                <div>
+                    <img class='companyLogo' src='lego.jpeg'>
+                    <p id='company_name'>Your Company Name</p>
+                </div>
             </a>
+            
             <div class='stat col-lg-3 d-flex flex-column justify-content-center align-items-center'>
                 <p>Listing Course</p>
                 <h1 id='listing_course_num'>10</h1>
@@ -22,7 +25,7 @@
 {{!-- Courses Table --}}
     <section id='section2'>
         <div class='host container'>
-            <a href='/add_course'><button class='newbtn'><i class="fas fa-plus"></i> &nbsp;&nbsp;NEW COURSE</button></a>
+            <a href='/add_course' id='addCourseBtn'><button class='newbtn'><i class="fas fa-plus"></i> &nbsp;&nbsp;NEW COURSE</button></a>
             
             <div class='table_container'>
                 <table class='host_table'>

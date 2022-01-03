@@ -177,7 +177,7 @@ $(() => {
     get(`/host/course_para/${sessionStorage.getItem("course_id")}`)
         .then((res) => {
             // displayOneCourses(res.data[0]);
-            $('.course_para').html(coursePara2Function(res.data[0]))
+            $('.course_para').html(courseParaFunction(res.data[0]))
         })
         .catch((err) => console.log(err));
 });

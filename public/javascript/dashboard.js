@@ -2,11 +2,11 @@
 const coursesTemplate = `
 {{#each course}}
     <tr class='table_row' data-id="{{id}}" data-title="{{title}}">
-    <td class='title'><a  href='/list_booking'>{{title}}</a></td>
+    <td class='title'><a href='/list_booking' class='nostyle'>{{title}}</a></td>
     <td>{{date}}</td>
     <td>-1/{{quota}}</td>
     <td>
-    <button class='edit'><a href='/edit_course'><i class="far fa-edit"></i></a></button>&nbsp;&nbsp;
+    <button class='edit'><a href='/edit_course' class='nostyle'><i class="far fa-edit"></i></a></button>&nbsp;&nbsp;
     <button class='delete'><i class="fas fa-trash-alt"></i></button>
     </td>
     </tr>
@@ -24,8 +24,11 @@ $(() => {
         .get("/host/shop")
         .then((res) => {
             // overall info at the top
-            console.log(res.data);
-            $("#company_name").html(res.data[0].company);
+            axios.get("/info/shop").then((res) => {
+                $("#company_name").html(res.data[0].company)
+                $("#navbar_company_name").html(`Hello, ${res.data[0].company}!`)
+            });
+
             $("#listing_course_num").html(res.data.length);
 
             //table body
@@ -60,6 +63,15 @@ $(() => {
                 let course_id = $(event.currentTarget).closest(".table_row").data("id");
                 sessionStorage.setItem("course_id", course_id);
             });
+
+            //Set course ID to number of existing course +1
+            $('#addCourseBtn').on('click', (event) => {
+                axios.put('/display/max').then((res) => {
+                    let max = (res.data[0].max)
+                    sessionStorage.setItem("course_id", max + 1)
+                    console.log(sessionStorage.getItem("course_id"))
+                })
+            })
         })
         .catch((err) => console.log(err));
 });
