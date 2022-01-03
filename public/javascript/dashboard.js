@@ -79,13 +79,22 @@ $(() => {
                   let bookNum = res.data.length;
                   courses[i].bookNum = bookNum;
                 })
-                .then(() => displayCourses(res.data));
+                .then(() =>
+                  displayCourses(
+                    res.data.map((x) => {
+                      x.date = x.date.split("T")[0];
+                      return x;
+                    })
+                  )
+                );
             }
 
             displayCourses(res.data);
             $("#delete_msg").html(
               `Your course '${delete_title}' is successfully deleted.`
             );
+
+            window.location.href = "/dashboard";
           })
 
           .catch((err) => console.log(err));

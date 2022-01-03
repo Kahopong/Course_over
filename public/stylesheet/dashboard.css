@@ -98,19 +98,22 @@ body {
 }
 
 .host_table .edit,
-.host_table .delete {
+.host_table .delete,
+.host_table .pic {
   background-color: transparent;
   border: none;
   border-radius: 50px;
 }
 
 .host_table .edit i,
-.host_table .delete i {
+.host_table .delete i,
+.host_table .pic {
   color: var(--color2);
 }
 
 .host_table .edit:hover,
-.host_table .delete:hover {
+.host_table .delete:hover,
+.host_table .pic:hover {
   background-color: var(--color5);
   border-radius: 50px;
 }

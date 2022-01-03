@@ -81,7 +81,6 @@ left side info
 
 .course_feature .row {
   border-top: 1px solid #cecece;
-  border-bottom: 1px solid #cecece;
   padding: 20px 0 20px 0;
 }
 
@@ -166,8 +165,7 @@ Right card
   border-radius: 25px;
   width: 300px;
   margin: 30px auto;
-  display: flex;
-  justify-content: center;
+  display: none;
 }
 
 .unbook:hover {
@@ -181,4 +179,5 @@ Right card
 
 .favCourse {
   color: var(--color4);
+  display: none;
 }
