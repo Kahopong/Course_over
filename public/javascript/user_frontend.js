@@ -226,7 +226,7 @@ $(() => {
     .then((res) => {
       // overall info at the top
       //insert data into handlebars
-      displayIndexCourses(edittedTime(res.data));
+      displayIndexCourses(image(edittedTime(res.data)));
       // console.log(res.data);
     })
     .catch((err) => console.log(err));
@@ -292,8 +292,9 @@ axios.get('/info/users').then((res)=>{
             $(".unbook").hide();
             }
             })
-  .catch((err) => console.log(err));
+            .catch((err) => console.log(err));
     })
+
 
   
 
@@ -308,7 +309,7 @@ axios.get('/info/users').then((res)=>{
             // console.log(res.data);
         })
         .catch((err) => console.log(err));
-  })
+      })
 
     $("#All_course_card").on("click", ".course-title", (event) => {
         let course_id = $(event.currentTarget)
@@ -468,8 +469,7 @@ axios.get('/info/users').then((res)=>{
             $(".course_para").html(coursePara2Function(res.data[0]));
         })
         .catch((err) => console.log(err));
-})
-    
+});
 console.log("the id is", sessionStorage.getItem("course_id"));
 
 // window.location.href = '/index/course';
@@ -651,34 +651,33 @@ $(() => {
             return x;
         });
 
-    $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
+        $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
 
-    // member info Edit Form submit
-    $("#edit_member_info").submit((e) => {
-      e.preventDefault();
-      console.log("enter to edit user submit");
-      let serializeArray = $("#edit_member_info").serializeArray();
-      // let generalInfo = serializeArray.slice(0, 8);
-      // let paraInfo = serializeArray.slice(8);
-      let editUser = serializeArray.reduce((obj, input) => {
-        obj[input.name] = input.value;
-        return obj;
-      }, {});
-      console.log(`edit user`, editUser);
+        // member info Edit Form submit
+        $("#edit_member_info").submit((e) => {
+            e.preventDefault();
+            console.log("enter to edit user submit");
+            let serializeArray = $("#edit_member_info").serializeArray();
+            // let generalInfo = serializeArray.slice(0, 8);
+            // let paraInfo = serializeArray.slice(8);
+            let editUser = serializeArray.reduce((obj, input) => {
+                obj[input.name] = input.value;
+                return obj;
+            }, {});
+            console.log(`edit user`, editUser);
 
-      axios
-        .put(`/info/users/`, {
-          edit: editUser,
-        }) 
-        .then((res) => {
-          $("#success_editUser_msg").html(
-            `Your account '${editUser.username}' has been edited `
-          );
+            axios
+                .put(`/info/users/`, {
+                    edit: editUser,
+                })
+                .then((res) => {
+                    $("#success_editUser_msg").html(
+                        `Your account '${editUser.username}' has been edited `
+                    );
+                });
+            window.location.href = "/";
         });
-        window.location.href = '/login'
     });
-  });
-
 });
 
 // ================================================================
@@ -694,7 +693,8 @@ const uploadPicTemplate = `<div class="carousel-item active">
 
 const uploadPicFunction = Handlebars.compile(uploadPicTemplate);
 
+
 $(() => {
   let course_id = sessionStorage.getItem("course_id")
-  $('#carousel').html(uploadPicFunction({image: `./course${course_id}.jpeg`}))
-});
+  $('#carousel').html(uploadPicFunction({ image: `./course${course_id}.jpeg` }))
+})
