@@ -50,6 +50,11 @@ body {
   margin-bottom: 30px;
 }
 
+.host .newbtn:hover {
+  background-color: white;
+  border: 1px solid var(--color3);
+}
+
 .table_container {
   border-radius: 15px;
   border: 2px solid var(--color5);
@@ -92,6 +97,24 @@ body {
   padding-left: 20px;
 }
 
+.host_table .edit,
+.host_table .delete {
+  background-color: transparent;
+  border: none;
+  border-radius: 50px;
+}
+
+.host_table .edit i,
+.host_table .delete i {
+  color: var(--color2);
+}
+
+.host_table .edit:hover,
+.host_table .delete:hover {
+  background-color: var(--color5);
+  border-radius: 50px;
+}
+
 .footer {
   min-height: 35vh;
   background-color: var(--color1);
@@ -111,10 +134,6 @@ body {
   background-color: #ebebeb;
 }
 
-/* #shop_id {
-    display: none;
-} */
-
 .nostyle:link {
   text-decoration: inherit;
   color: inherit;
@@ -125,4 +144,8 @@ body {
   text-decoration: inherit;
   color: inherit;
   cursor: pointer;
+}
+
+#shop_id {
+  display: none;
 }

@@ -13,7 +13,7 @@ const ListAllCourseTemplate = `
               <h6><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;{{date}}</h6>
               <div>
                   <span class="card-text float-left"><i class="far fa-clock"></i>&nbsp;&nbsp;{{duration}} Hours</span>
-                  <span class="card-text float-right"> HKD{{price}}</span>
+                  <span class="card-text float-right"> HKD$ {{price}}</span>
               </div>
           </div>
       </div>
@@ -96,20 +96,22 @@ const displayOneCourses = (data) => {
 };
 
 const coursePara2Template = `
-<div class="course_about">
+<div class="course_specialnote">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 course_specialnote_title">
+        <i class="fas fa-comment courseinfo_i"></i>
+        <span>About This Course</span>
+        </div>
         <p class="course_about_text">{{about}}</p>
-    </div>
   </div>
 </div>
                     
 <div class="course_specialnote">
   <div class="row">
-    <div class="col-lg-6 course_specialnote_title">
+    <div class="col-lg-12 course_specialnote_title">
       <i class="fas fa-comment courseinfo_i"></i>
         <span>Special Notes</span>
-        </div>
+    </div>
         <p>{{specialNote}}</p>
     </div>
 </div>`;

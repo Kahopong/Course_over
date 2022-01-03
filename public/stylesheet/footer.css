@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Merienda+One&display=swap");
+
 :root {
   --color1: #40bab3;
   --color2: #030e4c;
@@ -23,8 +25,13 @@ body {
 
 .footer .logo {
   margin-bottom: 10px;
+  font-family: "Merienda One", cursive;
 }
 
+.footer .row {
+  justify-content: space-between;
+  padding-left: 10px;
+}
 .footer-content {
   width: 70%;
 }
@@ -40,4 +47,20 @@ body {
 
 .footer .copyright {
   margin-top: 10px;
+}
+
+.footer .nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.footer .nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.footer .nostyle:hover {
+  color: var(--color2);
 }
