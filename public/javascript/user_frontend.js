@@ -5,7 +5,7 @@ const ListAllCourseTemplate = ` {{#each course}}
           <img class="card-img-top" src="./lego.jpeg" alt="card-img-cap">
           <div class="card-body" >
           <div class='d-flex justify-content-between'>
-                    <span class="card-text"><h5 class="card-title">{{title}}</h5></span>
+                    <span class="card-text"><h5>{{title}}</h5></span>
                  
                 </div>
               <h6 class="card-subtitle mb-2 text-muted">{{category}}</h6>

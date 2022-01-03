@@ -37,10 +37,19 @@ class HostService {
                             timeEnd: addInfo.timeEnd,
                             price: addInfo.price,
                             quota: addInfo.quota,
-                            ageRange: addInfo.ageRange,
-                            listing: true,
+                            ageRange: addInfo.Age,
                         })
-                        .into("course");
+                        .returning('id').then((data)=> {
+                            console.log(typeof data)
+                            if (data > 0){
+                                return this.knex("course_para").insert({
+                                course_id: data[0],
+                                about: addInfo.AboutC,
+                                specialNote: addInfo.SpecN
+                                })
+                            }
+                        })
+                       
                 } else {
                     throw new Error(`Cannot add a course when the user doesn't exist!`);
                 }

@@ -17,6 +17,19 @@ const coursesFunction = Handlebars.compile(coursesTemplate);
 const displayCourses = (data) => {
     $("#tbody").html(coursesFunction({ course: data }));
 };
+const edittedDate = (res_data) => {
+  return res_data.map((x) => {
+      x.date = x.date.split("T")[0];
+      x.timeStart = x.timeStart.split(':').map((x) => parseInt(x));
+      x.timeEnd = x.timeEnd.split(":").map((x) => parseInt(x));
+      let min =
+          (x.timeEnd[0] - x.timeStart[0]) * 60 +
+          (x.timeEnd[1] - x.timeStart[1]);
+      let hour = min / 60;
+      x.duration = hour;
+      return x;
+  });
+}
 
 // Document on ready function
 $(() => {
@@ -32,7 +45,7 @@ $(() => {
             $("#listing_course_num").html(res.data.length);
 
             //table body
-            displayCourses(res.data);
+            displayCourses(edittedDate(res.data));
 
             //Delete button click listener
             //To be confirmed (change status to 'Inactive')

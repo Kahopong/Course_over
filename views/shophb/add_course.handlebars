@@ -2,44 +2,51 @@
     <div class="HostC">Host a Course</div>
     <div class="CourseI">Course Information</div>
     <hr>
-  <form>
+  <form id="add_course_form">
       <div class="grid-container">
           <div class="grid-item1">
             <label for="CourseT">Course Title:</label><br>
-            <input type="text" id="CourseT" name="CourseT"><br>
+            <input type="text" id="CourseT" name="title"><br>
           </div>
           <div class="grid-item2">
             <label for="Category">Category:</label><br>
-            <input type="text" id="Category" name="Category"><br>
-          </div>
-          <div class="grid-item3">
-            <label for="Location">Location:</label><br>
-            <input type="text" id="Location" name="Location"><br>
+            <input type="text" id="Category" name="category"><br>
           </div>
           <div class="grid-item4">
             <label for="Date">Date:</label><br>
-            <input type="date" id="Date" name="Date"><br>
+            <input type="date" id="Date" name="date"><br>
           </div>
           <div class="grid-item5">
             <label for="StartT">Start Time:</label><br>
-            <input type="text" id="StartT" name="StartT"><br>
+            <input type="text" id="StartT" name="timeStart"><br>
           </div>
           <div class="grid-item6">
             <label for="EndT">End Time:</label><br>
-            <input type="text" id="EndT" name="EndT"><br>
+            <input type="text" id="EndT" name="timeEnd"><br>
           </div>
           <div class="grid-item7">
-            <label for="AgeR">Age Range:</label><br>
-            <input type="text" id="AgeR" name="AgeR"><br>
+            <label for="Price">Price:</label><br>
+            <input type="number" id="Price" name="price"><br>
           </div>
-          <div class="grid-item8">
+            <div class="grid-item8">
             <label for="Quota">Quota:</label><br>
-            <input type="text" id="Quota" name="Quota"><br>
+            <input type="number" id="Quota" name="quota"><br>
           </div>
           <div class="grid-item9">
-            <label for="Price">Price:</label><br>
-            <input type="text" id="Price" name="Price"><br>
+            <div>Choose the age range:</div><br>
+            
+            <input type="checkbox" id="Age1" name="Age" value="kids">
+            <label for="Age1"> Kids (0-12)</label>
+            <input type="checkbox" id="Age2" name="Age" value="junior">
+            <label for="Age2"> Junior (13-17)</label>
+            <input type="checkbox" id="Age3" name="Age" value="adults">
+            <label for="Age3"> Adults (18-65)</label>
+            <input type="checkbox" id="Age4" name="Age" value="senior">
+            <label for="Age4"> Senior (65+)</label>
+         
           </div>
+       
+         
 
       </div>
 
@@ -67,7 +74,7 @@
 
       </div>
 
-      <input type="submit" class="btn btn-warning">
+      <input type="submit" class="btn btn-warning btn6">
   </form>
 </div>
 

@@ -161,15 +161,24 @@ $(() => {
         });
     });
 
-    //add course
-    $("#add_course_form").submit((e) => {
-        e.preventDefault();
-        let serializeArray = $("#add_course_form").serializeArray();
-        let addCourse = serializeArray.reduce((obj, input) => {
-            obj[input.name] = input.value;
-            return obj;
-        }, {});
-        console.log(addCourse);
+  //add course
+  $("#add_course_form").submit((e) => {
+    e.preventDefault();
+    let serializeArray = $("#add_course_form").serializeArray();
+    console.log(serializeArray)
+    let addCourse = serializeArray.reduce((obj, input) => {
+      obj[input.name] = input.value;
+      return obj;
+    }, {});
+    let ageCriteria = ''
+    for(let i =0; i<serializeArray.length; i++){
+      if(serializeArray[i].name=='Age'){
+        ageCriteria +=  serializeArray[i].value
+        ageCriteria+= ','
+      }
+    }
+    addCourse['Age']=ageCriteria
+    console.log(addCourse);
 
         axios
             .post("/host/shop", {

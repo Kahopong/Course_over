@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-lg" id="mainNav">
         <div class="container">
-            <a class="navbar-brand nostyle" href="/index" id="sitename">CourseOver</a>
+            <a class="navbar-brand nostyle" href="/" id="sitename">CourseOver</a>
             <!-- Hambuger menu -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -36,14 +36,15 @@
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link nostyle" href="/dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link nostyle" href="/login">My account</a></li>
-                    <li class="nav-item"><a class="nav-link nostyle" id='navbar_company_name'>Hello, {{name}} !</a></li>
+                    <li class="nav-item"><a class="nav-link nostyle">Hello, {{name}} !</a></li>
+                    <li class="nav-item"><a class="nav-link nostyle" href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     
         
-    <h5>shop_main.handlebars</h5>
+    {{!-- <h5>shop_main.handlebars</h5> --}}
         {{{ body }}}
 
         
