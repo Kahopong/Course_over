@@ -94,7 +94,75 @@ const displayIndexCourses = (data) => {
 const displayOneCourses = (data) => {
     $("#Section2").html(ListOneCourseFunction(data));
 };
+// TEST
+const ListOneCourseTemplate2 = `  
+<div class="container">
+    <div class="row course">
+        <div class="col-lg-8 col-sm-12 ">
+            <!-- Title + Fav Row -->
+            <div class="row course_head">
+                <div class="title col-lg-11"><h4 class="courseinfo_h4">{{title}}</h4></div>
+                <div class="col-lg-1">
+                
+                </div>
+            </div>
+            <div class="course_feature">
+                <div class="row">
+                    <div class="col-lg-6 ">
+                        <i class="fas fa-users courseinfo_i"></i>
+                        <span>Age Range: {{ageRange}}</span>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <i class="fas fa-chart-pie courseinfo_i"></i>
+                        <span>Quota: {{quota}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="course_para">
+                
+            </div>
 
+            <div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="course_specialnote_text">{{specialNote}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 courseInfo">
+            <div class="courseInfo_container">
+                <div class="courseInfo_title">Course Details</div>
+                    <table class="courseInfo_content">
+                        <tbody>
+                        <tr>
+                            <td class="icon_col"><i class="fas fa-calendar courseinfo_i"></i></td>
+                            <td class="info_col">{{date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="icon_col"><i class="fas fa-clock courseinfo_i"></i></td>
+                            <td class="info_col">{{timeStart}} - {{timeEnd}}</td>
+                        </tr>
+                        <tr>
+                            <td class="icon_col"><i class="fas fa-tag courseinfo_i"></i></td>
+                            <td class="info_col">HKD$ {{price}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`;
+
+const ListOneCourseFunction2 = Handlebars.compile(ListOneCourseTemplate2);
+
+
+const displayOneCourses2 = (data) => {
+  $("#Section2").html(ListOneCourseFunction2(data));
+};
+// Test End
 const coursePara2Template = `
 <div class="course_specialnote">
   <div class="row">
@@ -153,7 +221,84 @@ $(() => {
         $("#navbar_user_name").html(`Hello, ${res.data[0].firstName}!`);
     })
 
+  axios
+    .get("/display")
+    .then((res) => {
+      // overall info at the top
+      //insert data into handlebars
+      displayIndexCourses(edittedTime(res.data));
+      // console.log(res.data);
+    })
+    .catch((err) => console.log(err));
 
+  $("#All_course_card").on("click", ".course-title", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container")
+      .data("id");
+    console.log("courseid", course_id);
+    sessionStorage.setItem("course_id", course_id);
+
+    // window.location.href = '/index/course';
+  });
+
+  // get course id on my Course
+  $("#section1").on("click", ".card-container .nostyle", (event) => {
+    let course_id = $(event.currentTarget)
+      .closest(".card-container")
+      .data("id");
+    console.log("courseid", course_id);
+    sessionStorage.setItem("course_id", course_id);
+
+    // window.location.href = '/index/course';
+  });
+
+axios.get('/info/users').then((res)=>{
+  console.log('data',res.data)
+  if(res.data =='no'){
+    sessionStorage.setItem("login", false)
+    console.log(sessionStorage.getItem("login"))
+  } else{
+    sessionStorage.setItem("login", true)
+  }
+})
+
+  axios
+    .get(`/display/${sessionStorage.getItem("course_id")}`)
+    .then((res) => {
+      if (sessionStorage.getItem("login") === 'false') {
+      displayOneCourses2(edittedTime2(res.data[0]));
+      console.log('false,falaflfal')
+      } else {
+        displayOneCourses(edittedTime2(res.data[0]));
+        console.log('trueakjdsfkajl')
+      }
+
+      console.log(res.data[0]);
+
+
+          // =================================================================
+          // Check Booked or not - change button depends on paid status
+          // =================================================================
+          axios
+          .get(`/book/users/${sessionStorage.getItem("course_id")}`)
+          .then((res) => {
+           console.log(`Check Booked or not`, res.data);
+           if (res.data != false) {
+             $(".booknow").hide();
+             $(".unbook").show();
+           } else if (res.data == false) {
+            console.log("gohome");
+            $(".booknow").show();
+            $(".unbook").hide();
+            }
+            })
+  .catch((err) => console.log(err));
+    })
+
+  
+
+  //   Book button -> post request
+  $("#Section2").on("click", ".booknow", (event) => {
     axios
         .get("/display")
         .then((res) => {
@@ -163,6 +308,7 @@ $(() => {
             // console.log(res.data);
         })
         .catch((err) => console.log(err));
+  })
 
     $("#All_course_card").on("click", ".course-title", (event) => {
         let course_id = $(event.currentTarget)
@@ -322,7 +468,8 @@ $(() => {
             $(".course_para").html(coursePara2Function(res.data[0]));
         })
         .catch((err) => console.log(err));
-});
+})
+    
 console.log("the id is", sessionStorage.getItem("course_id"));
 
 // window.location.href = '/index/course';
@@ -504,33 +651,34 @@ $(() => {
             return x;
         });
 
-        $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
+    $("#edit_member_form").html(editMemberInfoFunction(res.data[0]));
 
-        // member info Edit Form submit
-        $("#edit_member_info").submit((e) => {
-            e.preventDefault();
-            console.log("enter to edit user submit");
-            let serializeArray = $("#edit_member_info").serializeArray();
-            // let generalInfo = serializeArray.slice(0, 8);
-            // let paraInfo = serializeArray.slice(8);
-            let editUser = serializeArray.reduce((obj, input) => {
-                obj[input.name] = input.value;
-                return obj;
-            }, {});
-            console.log(`edit user`, editUser);
+    // member info Edit Form submit
+    $("#edit_member_info").submit((e) => {
+      e.preventDefault();
+      console.log("enter to edit user submit");
+      let serializeArray = $("#edit_member_info").serializeArray();
+      // let generalInfo = serializeArray.slice(0, 8);
+      // let paraInfo = serializeArray.slice(8);
+      let editUser = serializeArray.reduce((obj, input) => {
+        obj[input.name] = input.value;
+        return obj;
+      }, {});
+      console.log(`edit user`, editUser);
 
-            axios
-                .put(`/info/users/`, {
-                    edit: editUser,
-                })
-                .then((res) => {
-                    $("#success_editUser_msg").html(
-                        `Your account '${editUser.username}' has been edited `
-                    );
-                });
-            window.location = "/";
+      axios
+        .put(`/info/users/`, {
+          edit: editUser,
+        }) 
+        .then((res) => {
+          $("#success_editUser_msg").html(
+            `Your account '${editUser.username}' has been edited `
+          );
         });
+        window.location.href = '/login'
     });
+  });
+
 });
 
 // ================================================================
@@ -547,6 +695,6 @@ const uploadPicTemplate = `<div class="carousel-item active">
 const uploadPicFunction = Handlebars.compile(uploadPicTemplate);
 
 $(() => {
-    let course_id = sessionStorage.getItem("course_id")
-    $('#carousel').html(uploadPicFunction({ image: `./course${course_id}.jpeg` }))
-})
+  let course_id = sessionStorage.getItem("course_id")
+  $('#carousel').html(uploadPicFunction({image: `./course${course_id}.jpeg`}))
+});
