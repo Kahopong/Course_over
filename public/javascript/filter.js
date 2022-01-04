@@ -84,7 +84,7 @@ $(() => {
             if (typeof res.data == 'string') {
                 //error message at DisplayService.js
                 $('#All_course_card').html(`<h5 class="text-center">${res.data}</h5>`)
-            } else displayIndexCourses(edittedTime(res.data))
+            } else displayIndexCourses(image(edittedTime(res.data)))
         })
 
     });

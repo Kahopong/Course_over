@@ -59,16 +59,17 @@ class ViewRouter {
         });
 
         router.get("/index/course", (req, res) => {
-            if (req.session.passport != undefined && req.session.passport.user.isUser == true) {
-                res.render("usershb/courseinfo", {
-                    // user: req.session.passport.user.username,
-                    layout: "users_main",
-                });
-            } else {
-                res.render("usershb/courseinfo", {
-                    layout: "login_main",
-                });
+            if (req.session.passport != undefined && Object.keys(req.session.passport).length != 0) {
+                if (req.session.passport.user.isUser == true) {
+                    res.render("usershb/courseinfo", {
+                        layout: "users_main",
+                    });
+                }
             }
+            res.render("usershb/courseinfo", {
+                layout: "login_main",
+            });
+
         });
         router.get("/logout", function(req, res) {
             req.logout();
